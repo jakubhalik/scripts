@@ -19,7 +19,7 @@ for FILE in "$ZSHRC" "$BASHRC"; do
 	elif ! grep "$END_C" "$FILE"; then
 		log "End comment not found in $FILE"
 	elif [ "$(grep -c "$START_C" "$FILE")" -ne 1 ]; then
-		log "Multiple end comments found in $FILE"
+		log "Multiple start comments found in $FILE"
 		exit 1
 	elif [ "$(grep -c "$END_C" "$FILE")" -ne 1 ]; then
 		log "Multiple end comments found in $FILE"
@@ -31,7 +31,7 @@ log "Script continuing after for loop debug of if comments are appropriately fou
 
 log "Extracting aliases from $ZSHRC"
 
-zsh_aliases=$(sed -n "/$START_C/,/$END_C/p" "$ZSHRC")
+zsh_aliases=$(sed "/$START_C/,/$END_C/p" "$ZSHRC")
 
 echo "$zsh_aliases"
 
@@ -47,7 +47,7 @@ log "Extracted the part before the alias block"
 
 log "Extracting the part after the alias block in $BASHRC"
 
-sed -n "/$END_C/,\$p" "$BASHRC" | tail -n +2 > /tmp/bashrc_part3
+sed "/$END_C/,\$p" "$BASHRC" | tail -n +2 > /tmp/bashrc_part3
 
 cat /tmp/bashrc_part3
 
