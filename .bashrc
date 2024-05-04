@@ -5,10 +5,14 @@
 
 
 
+
 # Aliases over .zshrc and .bashrc being automatically the same start
 while read -r alias_definition; do 
     eval "alias $alias_definition"
 done << EOF
+
+    pv=$(grep 'pv' .env.local | cut -d '=' -f 2)
+
     b='linux-terminal-battery-status'
 
     clo='tty-clock'
@@ -176,8 +180,6 @@ done << EOF
     te='cd ~/temp; ls'
 
     mte='mkdir ~/temp'
-
-    pv=$(grep 'pv' .env.local | cut -d '=' -f 2)
 
     di='dict'
 
