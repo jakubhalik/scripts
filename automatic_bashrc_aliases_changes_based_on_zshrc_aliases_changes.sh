@@ -31,7 +31,7 @@ log "Script continuing after for loop debug of if comments are appropriately fou
 
 log "Extracting aliases from $ZSHRC"
 
-zsh_aliases=$(sed "/$START_C/,/$END_C/p" "$ZSHRC")
+zsh_aliases=$(sed -n "/$START_C/,/$END_C/p" "$ZSHRC")
 
 echo "$zsh_aliases"
 
@@ -47,7 +47,7 @@ log "Extracted the part before the alias block"
 
 log "Extracting the part after the alias block in $BASHRC"
 
-sed "/$END_C/,\$p" "$BASHRC" | tail -n +2 > /tmp/bashrc_part3
+sed -n "/$END_C/,\$p" "$BASHRC" | tail -n +2 > /tmp/bashrc_part3
 
 cat /tmp/bashrc_part3
 

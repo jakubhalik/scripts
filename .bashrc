@@ -3,6 +3,8 @@
 [[ $- != *i* ]] && return
 #
 
+
+
 # Aliases over .zshrc and .bashrc being automatically the same start
 while read -r alias_definition; do 
     eval "alias $alias_definition"
@@ -19,9 +21,9 @@ done << EOF
 
     cg='cd ~/Documents/git/github'
 
-    cs='cd ~/Documents/git/github/Scripts'
+    cs='cd ~/Documents/git/github/scripts'
 
-    cl='~/Documents/git/github/Scripts/countLines.sh'
+    cl='~/Documents/git/github/scripts/countLines.sh'
 
     se='setxkbmap'
 
@@ -117,21 +119,19 @@ done << EOF
 
     lh='i3lock -c 000000'
 
-    si='~/Documents/git/github/Scripts/saveImgsFromInternetInOrder.sh'
+    si='~/Documents/git/github/scripts/saveImgsFromInternetInOrder.sh'
 
-    zb='~/Documents/git/github/Scripts/automatic_bashrc_aliases_changes_based_on_zshrc_aliases_changes.sh'
+    zb='~/Documents/git/github/scripts/automatic_bashrc_aliases_changes_based_on_zshrc_aliases_changes.sh'
 
-    bb='cp ~/Documents/git/github/Scripts/.bashrc ~/.bashrc'
+    bb='cp ~/Documents/git/github/scripts/.bashrc ~/.bashrc'
 
     rbzb='rm -rf ~/.bashrc; bb; zb'
 
-    zbg='rm -rf ~/Documents/git/github/Scripts/.zshrc; rm -rf ~/Documents/git/github/Scripts/.bashrc; cp ~/.zshrc ~/Documents/git/github/Scripts/.zshrc; cp ~/.bashrc ~/Documents/git/github/Scripts/.bashrc'
+    zbg='rm -rf ~/Documents/git/github/scripts/.zshrc; rm -rf ~/Documents/git/github/scripts/.bashrc; cp ~/.zshrc ~/Documents/git/github/scripts/.zshrc; cp ~/.bashrc ~/Documents/git/github/scripts/.bashrc'
 
-    gzb='rm -rf ~/.zshrc; rm -rf ~/.bashrc; cp ~/Documents/git/github/Scripts/.zshrc ~/.zshrc; bb'
+    gzb='rm -rf ~/.zshrc; rm -rf ~/.bashrc; cp ~/Documents/git/github/scripts/.zshrc ~/.zshrc; bb'
 
     szb='so ~/.zshrc; rbzb; so ~/.bashrc; zsh'
-
-    szbg='rbzb; szb; zbg; cd ~/Documents/git/github/Scripts; git add .; git commit -m "new"; git push'
 
     br='brave'
 
@@ -169,13 +169,15 @@ done << EOF
 
     gl='cd ~/Documents/git/gitlab'
 
-    dif='~/Documents/git/github/Scripts/different_rc_generating_based_on_files_structure.sh'
+    dif='~/Documents/git/github/scripts/different_rc_generating_based_on_files_structure.sh'
 
     ac='m; au code.mp3'
 
     te='cd ~/temp; ls'
 
     mte='mkdir ~/temp'
+
+    pv=$(grep 'pv' .env.local | cut -d '=' -f 2)
 
     di='dict'
 
@@ -196,6 +198,12 @@ done << EOF
     mc='sudo make clean install'
 
     asm='amixer set Master'
+    
+    e='eval "\$(ssh-agent -s)"'
+
+    soa='ssh-add ~/.ssh/github_ed25519'
+
+    sst='ssh -T git@github.com'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 
