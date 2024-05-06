@@ -304,6 +304,8 @@ done << EOF
     soa='ssh-add ~/.ssh/github_ed25519'
 
     sst='ssh -T git@github.com'
+
+    ma='bc'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 #

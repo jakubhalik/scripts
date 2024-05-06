@@ -6,6 +6,7 @@
 
 
 
+
 # Aliases over .zshrc and .bashrc being automatically the same start
 while read -r alias_definition; do 
     eval "alias $alias_definition"
@@ -206,6 +207,8 @@ done << EOF
     soa='ssh-add ~/.ssh/github_ed25519'
 
     sst='ssh -T git@github.com'
+
+    ma='bc'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 
