@@ -306,6 +306,10 @@ done << EOF
     sst='ssh -T git@github.com'
 
     ma='bc'
+
+    ot='o; nv tech.md'
+
+    oe='o; nv everything.md'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 #
