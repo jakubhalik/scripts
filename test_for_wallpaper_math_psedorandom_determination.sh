@@ -5,7 +5,7 @@
 W_DIR="do/w"
 WS=($(find "$W_DIR" -type f \( -name '*.jpg' -o -name '*.png' \)))
 N_WS=${#WS[@]}
-CS=16a
+CS=16
 W_P_C=$((N_WS / CS))
 
 function p_s_o {
@@ -25,4 +25,6 @@ function p_s_o {
 }
 
 p_s_o
+
+
 
