@@ -115,6 +115,8 @@ done << EOF
 
     f='feh'
 
+    ff='f --draw-filename'
+
     pict='cd ~/p'
 
     lo='xtrlock'
