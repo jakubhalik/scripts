@@ -310,6 +310,8 @@ done << EOF
     ot='o; nv tech.md'
 
     oe='o; nv everything.md'
+
+    fi='firefox'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 #
