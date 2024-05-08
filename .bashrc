@@ -1,13 +1,8 @@
+
 # ~/.bashrc
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 #
-
-
-
-
-
-
 
 # Aliases over .zshrc and .bashrc being automatically the same start
 while read -r alias_definition; do 
@@ -26,11 +21,11 @@ done << EOF
 
     h='cd ~'
 
-    cg='cd ~/Documents/git/github'
+    cg='cd ~/d/g/gh'
 
-    cs='cd ~/Documents/git/github/scripts'
+    cs='cd ~/d/g/gh/scripts'
 
-    cl='~/Documents/git/github/scripts/countLines.sh'
+    cl='~/d/g/gh/scripts/countLines.sh'
 
     se='setxkbmap'
 
@@ -52,7 +47,7 @@ done << EOF
 
     scu='cd src/components/ui'
 
-    k='cd ~/Documents/git/github/k12tabor'
+    k='cd ~/d/g/gh/k12tabor'
 
     al='alsamixer'
 
@@ -94,9 +89,9 @@ done << EOF
 
     str='cd ~/.local/src/st'
 
-    o='cd ~/Documents/git/github/obsidian-notes'
+    o='cd ~/d/g/gh/obsidian-notes'
 
-    v='cd ~/Videos'
+    v='cd ~/v'
 
     p='cd public'
 
@@ -114,29 +109,29 @@ done << EOF
 
     bt='bu | t'
 
-    doc='cd ~/Documents'
+    doc='cd ~/d'
 
-    scr='cd ~/Documents/screenshots'
+    scr='cd ~/d/screenshots'
 
     f='feh'
 
-    pict='cd ~/Pictures'
+    pict='cd ~/p'
 
     lo='xtrlock'
 
     lh='i3lock -c 000000'
 
-    si='~/Documents/git/github/scripts/saveImgsFromInternetInOrder.sh'
+    si='~/d/g/gh/scripts/saveImgsFromInternetInOrder.sh'
 
-    zb='~/Documents/git/github/scripts/automatic_bashrc_aliases_changes_based_on_zshrc_aliases_changes.sh'
+    zb='~/d/g/gh/scripts/automatic_bashrc_aliases_changes_based_on_zshrc_aliases_changes.sh'
 
-    bb='cp ~/Documents/git/github/scripts/.bashrc ~/.bashrc'
+    bb='cp ~/d/g/gh/scripts/.bashrc ~/.bashrc'
 
     rbzb='rm -rf ~/.bashrc; bb; zb'
 
-    zbg='rm -rf ~/Documents/git/github/scripts/.zshrc; rm -rf ~/Documents/git/github/scripts/.bashrc; cp ~/.zshrc ~/Documents/git/github/scripts/.zshrc; cp ~/.bashrc ~/Documents/git/github/scripts/.bashrc'
+    zbg='rm -rf ~/d/g/gh/scripts/.zshrc; rm -rf ~/d/g/gh/scripts/.bashrc; cp ~/.zshrc ~/d/g/gh/scripts/.zshrc; cp ~/.bashrc ~/d/g/gh/scripts/.bashrc'
 
-    gzb='rm -rf ~/.zshrc; rm -rf ~/.bashrc; cp ~/Documents/git/github/scripts/.zshrc ~/.zshrc; bb'
+    gzb='rm -rf ~/.zshrc; rm -rf ~/.bashrc; cp ~/d/g/gh/scripts/.zshrc ~/.zshrc; bb'
 
     szb='so ~/.zshrc; rbzb; so ~/.bashrc; zsh'
 
@@ -146,7 +141,7 @@ done << EOF
 
     au='mplayer'
 
-    m='cd ~/Music'
+    m='cd ~/m'
 
     ash='m; au -shuffle *.mp3'
 
@@ -174,9 +169,9 @@ done << EOF
 
     we='wi connect'
 
-    gl='cd ~/Documents/git/gitlab'
+    gl='cd ~/d/g/gl'
 
-    dif='~/Documents/git/github/scripts/different_rc_generating_based_on_files_structure.sh'
+    dif='~/d/g/gh/scripts/different_rc_generating_based_on_files_structure.sh'
 
     ac='m; au code.mp3'
 
@@ -219,4 +214,3 @@ done << EOF
     fi='firefox'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
-
