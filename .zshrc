@@ -312,6 +312,8 @@ done << EOF
     oe='o; nv everything.md'
 
     fi='firefox'
+
+    dw='cd ~/do'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 #
