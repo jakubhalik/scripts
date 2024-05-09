@@ -316,6 +316,8 @@ done << EOF
     fi='firefox'
 
     dw='cd ~/do'
+
+    tm='cs; vim test_for_wallpaper_math_psedorandom_determination.sh'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 #
