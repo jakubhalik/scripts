@@ -10,7 +10,7 @@ W_P_C=$((N_WS / CS))
 
 function p_s_o {
 	CU_S=$(date +%S)
-	ST_C=$((CU_S % CS))
+	ST_C=$(((CU_S * CS / 60) % CS))
 	echo "Current second: $CU_S"
 	echo "Starting category: $ST_C"
 	for O in {0..15}; do
