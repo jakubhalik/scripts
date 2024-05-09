@@ -320,6 +320,12 @@ done << EOF
     tm='cs; vim test_for_wallpaper_math_pseudorandom_determination.sh'
 
     tx='~/d/g/gh/scripts/test_for_wallpaper_math_pseudorandom_determination.sh'
+
+    py='python'
+
+    ha='cs; py halving.py'
+
+    nh='cs; nv halving.py'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 #
