@@ -5,7 +5,7 @@ def b_s(a, t):
     while l <= r:
         m = (l + r) // 2
         if a[m] == t:
-            return mid
+            return m
         elif a[m] < t:
             l = m + 1
         else:
