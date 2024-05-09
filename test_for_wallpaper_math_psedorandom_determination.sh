@@ -26,5 +26,3 @@ function p_s_o {
 
 p_s_o
 
-
-
