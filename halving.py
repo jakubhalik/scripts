@@ -1,31 +1,51 @@
+
 import math
-# h=halving; s=sequence; n=number; l=length;
-def h_s(n):
-    if n < 1:
-        print("NUmber must be greater than or equal to 1.")
-        return
 
-    n = math.ceil(n / 2)
-    print(n)
-    n1 = math.ceil(n / 2)
-    print(n1)
-    n2 = math.ceil(n + n1)
-    print(n2)
-    n3 = math.ceil(n1 / 2)
-    print(n3)
-    n4 = math.ceil(n2 + n3)
-    print(n4)
-    n5 = math.ceil(n2 / 2)
-    print(n5)
-    n6 = math.ceil(n1 + n5)
-    print(n6)
-    n7 = math.ceil(n3 + n5)
-    print(n7)
-    n8 = math.ceil(n1 + n7)
-    print(n8)
-    n9 = math.ceil(n3 / 2)
-    print(n9)
+def fibonacci_indices(limit):
+    a, b = 0, 1
+    indices = set()
+    while b <= limit:
+        indices.add(b)
+        a, b = b, a + b
+    return indices
 
-n = float(input("Enter a number: "))
-h_s(n)
+def should_use_fib_rule(index, fib_indices):
+    return index in fib_indices
+
+def generate_sequence(n):
+    seq = []
+    processed_half = set()
+    fib_indices = fibonacci_indices(2 * n)  # Get Fibonacci indices to influence operation
+    current = math.ceil(n / 2)
+    seq.append(current)
+
+    while len(seq) < n:
+        if len(seq) == 1 or current not in processed_half:
+            current = math.ceil(current / 2)
+            processed_half.add(current)
+        else:
+            if len(seq) > 1:
+                sum_last_two = seq[-1] + seq[-2]
+                if sum_last_two < n and sum_last_two not in seq:
+                    current = sum_last_two
+                elif should_use_fib_rule(len(seq), fib_indices):
+                    current = math.ceil(sum_last_two / 2)
+                else:
+                    current = sum_last_two
+            else:
+                current = math.ceil(current / 2)
+
+        if current > n or current in seq:
+            current = min(set(range(1, n + 1)) - set(seq), default=1)  # Safe fallback
+
+        seq.append(current)
+        if len(seq) == n:
+            break
+
+    return seq
+
+# Example
+n = 10
+sequence = generate_sequence(n)
+print(sequence)
 

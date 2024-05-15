@@ -7,12 +7,9 @@ def b_s(a, t):
         print("Current left index:", l)
         print("Current right index:", r)
         print("Current middle index:", m)
-        if a[m] == t:
-            return m
-        elif a[m] < t:
-            l = m + 1
-        else:
-            r = m - 1
+        if a[m] == t: return m
+        elif a[m] < t: l = m + 1
+        else: r = m - 1
     return -1
 
 a = [12, 5432, 223, 64, 3, 54, 6, 12, 45, 6, 2, 5, 6, 12, 34787348, 324]
