@@ -16,6 +16,6 @@ int main() {
     int t = 54;
     int re = b_s(a, 0, n - 1, t);
     if (re == -1) printf("Element is not present in the array.");
-    else printf("Element is present and index %d: ", re);
+    else printf("Element is present and at index %d\n", re);
     return 0;
 }
