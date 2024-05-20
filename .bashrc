@@ -69,7 +69,7 @@ done << EOF
 
     sp='sudo pacman'
 
-    i='sp -S'
+    i='sp -S --needed'
 
     u='sp -Syu'
 
@@ -226,5 +226,9 @@ done << EOF
     ha='cs; py halving.py'
 
     nh='cs; nv halving.py'
+
+    shc='shotcut'
+
+    gi='gimp'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
