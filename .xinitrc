@@ -37,17 +37,15 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 WALLPAPER_DIR="do/w"
-WALLPAPERS=($(
-	find "$WALLPAPER_DIR" -type f \( -name '*.jpg' -o -name '*.png' \)
-))
-NUM_WALLPAPERS=${#WALLPAPERS[@]}
+WALLPAPERS=$(find "$WALLPAPER_DIR" -type f \( -name '*.jpg' -o -name '*.png' \))
+NUM_WALLPAPERS=$(echo "$WALLPAPERS" | wc -l)
 while true; do
-	RANDOM_INDEX=$((RANDOM % NUM_WALLPAPERS))
-	SELECTED_WALLPAPER="${WALLPAPERS[$RANDOM_INDEX]}"
-	xwallpaper --zoom "$SELECTED_WALLPAPER"
-	wal -i "$SELECTED_WALLPAPER"
-	RANDOM_INTERVAL=$((RANDOM % 91 + 90))
-	sleep $RANDOM_INTERVAL
+    RANDOM_INDEX=$((RANDOM % NUM_WALLPAPERS + 1))
+    SELECTED_WALLPAPER=$(echo "$WALLPAPERS" | sed -n "${RANDOM_INDEX}p")
+    xwallpaper --zoom "$SELECTED_WALLPAPER"
+    wal -i "$SELECTED_WALLPAPER"
+    RANDOM_INTERVAL=$((RANDOM % 91 + 90))
+    sleep "$RANDOM_INTERVAL"
 done &
 
 xcompmgr &
