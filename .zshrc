@@ -313,7 +313,7 @@ done << EOF
 
     oe='o; nv everything.md'
 
-    fi='firefox'
+    fi='firefox -no-remote -ProfileManager'
 
     dw='cd ~/do'
 
@@ -330,6 +330,8 @@ done << EOF
     shc='shotcut'
 
     gi='gimp'
+
+    ne='neofetch'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 #
