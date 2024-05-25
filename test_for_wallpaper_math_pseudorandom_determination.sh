@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# This script does not actually work as it should, not even close really, but right now I do not need it anymore, maybe I will never need it, but I will keep the WIP here just for case.
 # W=Wallpaper; C=Category; P=Per; CU=Current; S=second; ST=Start; O=Offset; I=Index; M=Middle; p_s_o=print_selection_order; L=Logged;
 # LE=Left; R=Right; E=End;
 
@@ -95,3 +95,4 @@ echo "Categories - 1: $CS"
 echo "Executing print selection order function"
 p_s_o 0 $((CS -1))
 echo "All wallpapers have been logged."
+
