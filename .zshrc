@@ -334,6 +334,15 @@ done << EOF
     gi='gimp'
 
     ne='neofetch'
+
+    do='cd ~/d'
+
+    pdf='zathura'    
+
+    li='libreoffice'
+
+    ex='cd ~/excalidraw'
+
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 #
