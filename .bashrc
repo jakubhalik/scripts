@@ -211,6 +211,8 @@ done << EOF
 
     ot='o; nv tech.md'
 
+    vt='o; vim tech.md'
+
     oe='o; nv everything.md'
 
     fi='firefox -no-remote -ProfileManager'
