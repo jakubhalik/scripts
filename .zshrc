@@ -343,6 +343,8 @@ done << EOF
 
     ex='cd ~/excalidraw'
 
+    dk='docker-compose up --build -d'
+
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 #
