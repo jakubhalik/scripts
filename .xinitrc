@@ -38,7 +38,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 $HOME/d/g/gh/scripts/wallpaper_switching.sh &
-xcompmgr &
+xcompmgr -c -f -n &
 exec dwm &
 st 
 
