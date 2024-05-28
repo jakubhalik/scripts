@@ -1,0 +1,214 @@
+# Might have to write something else instead of sdas depending on the desktop hardware
+# Repetition regarding installs or similarities is to always see the logs explicitly for that very package
+# Y/y/YES/yes/enter to all pacman installs
+# If pacman command does not work put a sudo before it, I sometimes wrote it with it before, sometimes without it below in the instructions
+# Just after downloading the .iso and the .sig before starting the arch installation
+pacman-key --init
+pacman-key --populate archlinux
+gpg --keyserver-options auto-key-retrieve --verify archlinux-2024.05.01-x86_64.iso.sig
+# After starting the arch installation
+ip addr show
+lsblk
+fdisk /dev/sda
+    p
+        g
+    n
+        1 (default)
+            (default)
+            +1G
+                Y
+    n
+        2 (default)
+            (default)
+            +2G
+                Y
+    n
+        3 (default)
+            (default)
+            (default)
+    t
+        1 (hopefully default)
+        1 (if 2 or 3 or 2 and 3 then 44)
+    p
+        w
+mkfs.fat -F32 /dev/sda1
+cryptsetup luksFormat /dev/sda2
+    YES
+        password
+        password
+mkfs.fat -F32 /dev/sda2
+cryptsetup luksFormat /dev/sda3
+    YES
+        password
+        password
+cryptsetup open --type luks /dev/sda3 lvm
+    password
+pvcreate /dev/mapper/lvm
+vgcreate volgroup0 /dev/mapper/lvm
+lvcreate -L 70G volgroup0 -n lv_root
+lvcreate -L 109G volgroup0 -n lv_home
+vgdisplay
+lvdisplay
+modprobe dm_mod
+vgscan
+vgchange -ay
+mkfs.ext4 /dev/volgroup0/lv_root
+mkfs.ext4 /dev/volgroup0/lv_home
+mount /dev/volgroup0/lv_root /mnt
+mkdir /mnt/boot
+mount /dev/sda2 /mnt/boot
+mkdir /mnt/home
+mount /dev/volgroup0/lv_home /mnt/home
+pacstrap -i /mnt base
+    Y
+genfstab -U -p /mnt >> /mnt/etc/fstab
+cat /mnt/etc/fstab
+arch-chroot /mnt
+passwd
+    password
+    password
+useradd -m -g users -G wheel x
+passwd x
+    password
+    password
+pacman -S base-devel
+pacman -S dosfstools
+pacman -S grub
+pacman -S lvm2
+pacman -S mtools
+pacman -S vim
+pacman -S nvim
+pacman -S networkmanager
+pacman -S openssh
+pacman -S sudo
+pacman -S linux
+pacman -S linux-headers
+pacman -S linux-lts
+pacman -S linux-lts-headers
+pacman -S linux-firmware
+lspci
+pacman -S the appropriate driver for your GPU/what you have for graphics
+maybe pacman -S libva-mesa-driver
+nvim /etc/mkinitcpio.conf
+    add encrypt lvm2 between block and filesystems in HOOKS
+mkinitcpio -p linux
+mkinitcpio -p linux-lts
+nvim /etc/locale.gen
+    en_US.UTF-8 UTF-8
+locale-gen
+nvim /etc/default/grub
+    # GRUB boot loader configuration
+        GRUB_DEFAULT=0
+        GRUB_TIMEOUT=5
+        GRUB_DISTRIBUTOR="Arch"
+        GRUB_CMDLINE_LINUX_DEFAULT="loglevel=7 cryptdevice=/dev/sda2:boot cryptdevice=/dev/sda3:root root=/dev/mapper/root cryptkey=rootfs:/root/keyfile"
+        GRUB_CMDLINE_LINUX=""
+        # Preload both GPT and MBR modules so that they are not missed
+        GRUB_PRELOAD_MODULES="part_gpt part_msdos"
+        # Uncomment to enable booting from LUKS encrypted devices
+        #GRUB_ENABLE_CRYPTODISK=y
+        # Set to 'countdown' or 'hidden' to change timeout behavior,
+        # press ESC key to display menu.
+        GRUB_TIMEOUT_STYLE=menu
+        # Uncomment to use basic console
+        GRUB_TERMINAL_INPUT=console
+        # Uncomment to disable graphical terminal
+        #GRUB_TERMINAL_OUTPUT=console
+        # The resolution used on graphical terminal
+        # note that you can use only modes which your graphic card supports via VBE
+        # you can see them in real GRUB with the command `videoinfo'
+        GRUB_GFXMODE=auto
+        # Uncomment to allow the kernel use the same resolution used by grub
+        GRUB_GFXPAYLOAD_LINUX=keep
+        # Uncomment if you want GRUB to pass to the Linux kernel the old parameter
+        # format "root=/dev/xxx" instead of "root=/dev/disk/by-uuid/xxx"
+        #GRUB_DISABLE_LINUX_UUID=true
+        # Uncomment to disable generation of recovery mode menu entries
+        GRUB_DISABLE_RECOVERY=true
+        # Uncomment and set to the desired menu colors.  Used by normal and wallpaper
+        # modes only.  Entries specified as foreground/background.
+        #GRUB_COLOR_NORMAL="light-blue/black"
+        #GRUB_COLOR_HIGHLIGHT="light-cyan/blue"
+        # Uncomment one of them for the gfx desired, a image background or a gfxtheme
+        #GRUB_BACKGROUND="/path/to/wallpaper"
+        #GRUB_THEME="/path/to/gfxtheme"
+        # Uncomment to get a beep at GRUB start
+        #GRUB_INIT_TUNE="480 440 1"
+        # Uncomment to make GRUB remember the last selection. This requires
+        # setting 'GRUB_DEFAULT=saved' above.
+        #GRUB_SAVEDEFAULT=true
+        # Uncomment to disable submenus in boot menu
+        #GRUB_DISABLE_SUBMENU=y
+        # Probing for other operating systems is disabled for security reasons. Read
+        # documentation on GRUB_DISABLE_OS_PROBER, if still want to enable this
+        # functionality install os-prober and uncomment to detect and include other
+        # operating systems.
+        #GRUB_DISABLE_OS_PROBER=false
+mkdir /boot/EFI
+mount /dev/sda1 /boot/EFI
+grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
+grub-mkconfig -o /boot/grub/grub.cfg
+systemctl enable NetworkManager
+(If you want to) systemctl enable sshd
+exit
+umount -a OR(dont write the OR or this stuff in bracket literally lol) umount -R /mnt
+ignore errors (unless way too unusual)
+reboot/systemctl reboot/sudo systemctl reboot
+sudo pacman -S git
+sudo pacman -S alsamixer
+mkdir -p .local/src
+cd .local/src
+git clone https://github.com/bugswriter/dwm.git
+git clone https://github.com/bugswriter/dmenu.git
+git clone https://github.com/bugswriter/st.git
+ls
+cd dwm
+sudo make clean install
+sudo pacman -S libxinerama
+sudo make clean install
+..
+cd st
+sudo make clean install
+..
+cd dmenu
+sudo make clean install
+sudo pacman -S xcompmgr
+sudo pacman -S ttf-jetbrains-nano ttf-font-awesome
+sudo pacman -S xsel
+sudo pacman -S xwallpaper
+sudo pacman -S python-pywall
+cp /etc/x11/xinit/xinitrc ~/.xinitrc
+nvim .xinitrc
+    #!/bin/sh
+    userresources=$HOME/.Xresources
+    usermodmap=$HOME/.Xmodmap
+    sysresources=/etc/X11/xinit/.Xresources
+    sysmodmap=/etc/X11/xinit/.Xmodmap
+    # merge in defaults and keymaps
+    if [ -f $sysresources ]; then
+        xrdb -merge $sysresources
+    fi
+    if [ -f $sysmodmap ]; then
+        xmodmap $sysmodmap
+    fi
+    if [ -f "$userresources" ]; then
+        xrdb -merge "$userresources"
+    fi
+    if [ -f "$usermodmap" ]; then
+        xmodmap "$usermodmap"
+    fi
+    # start some nice programs
+    if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+     for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+      [ -x "$f" ] && . "$f"
+     done
+     unset f
+    fi
+    $HOME/d/g/gh/scripts/wallpaper_switching.sh &
+    xcompmgr &
+    exec dwm &
+    st 
+sudo pacman xorg-xrandr
+xrandr --output Virtual-1 --mode 1920x1080
+
