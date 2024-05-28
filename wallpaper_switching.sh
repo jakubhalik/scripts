@@ -9,6 +9,7 @@ while true; do
 	RANDOM_INDEX=$((RANDOM % NUM_WALLPAPERS))
 	SELECTED_WALLPAPER="${WALLPAPERS[$RANDOM_INDEX]}"
 	xwallpaper --zoom "$SELECTED_WALLPAPER"
+	# wal is from python-pywall
 	wal -i "$SELECTED_WALLPAPER"
 	RANDOM_INTERVAL=$((RANDOM % 91 + 90))
 	sleep $RANDOM_INTERVAL
