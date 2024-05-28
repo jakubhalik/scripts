@@ -39,7 +39,6 @@ fi
 
 $HOME/d/g/gh/scripts/wallpaper_switching.sh &
 xcompmgr &
-zb &
 exec dwm &
 st 
 
