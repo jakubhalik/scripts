@@ -246,5 +246,7 @@ done << EOF
     dk='docker-compose up --build -d'
 
     to='tor-browser'
+
+    ic='~/d/g/gh/scripts/install_all_vids_from_a_youtube_channel.sh'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
