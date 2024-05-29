@@ -248,5 +248,7 @@ done << EOF
     to='tor-browser'
 
     ic='~/d/g/gh/scripts/install_all_vids_from_a_youtube_channel.sh'
+
+    vl='cd ~/v/l'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
