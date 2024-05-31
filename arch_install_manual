@@ -43,7 +43,6 @@ cryptsetup luksFormat /dev/sda2
     YES
         password
         password
-mkfs.fat -F32 /dev/sda2
 cryptsetup luksFormat /dev/sda3
     YES
         password
@@ -52,8 +51,8 @@ cryptsetup open --type luks /dev/sda3 lvm
     password
 pvcreate /dev/mapper/lvm
 vgcreate volgroup0 /dev/mapper/lvm
-lvcreate -L 70G volgroup0 -n lv_root
-lvcreate -L 109G volgroup0 -n lv_home
+lvcreate -L {size for the logical volume, if I had 460G for sda I would give this one 100G, but 30G is often more than enough here, unless bloated JS packages haha) volgroup0 -n lv_root
+lvcreate -L {here just the rest of what u got bro} volgroup0 -n lv_home
 vgdisplay
 lvdisplay
 modprobe dm_mod
@@ -62,15 +61,28 @@ vgchange -ay
 mkfs.ext4 /dev/volgroup0/lv_root
 mkfs.ext4 /dev/volgroup0/lv_home
 mount /dev/volgroup0/lv_root /mnt
-mkdir /mnt/boot
-mount /dev/sda2 /mnt/boot
+mkdir -p /mnt/boot
+cryptsetup luksOpen /dev/sda2 boot
+ls /dev/mapper
+lsblk
+file -s /dev/mapper/boot
+mount /dev/mapper/boot /mnt/boot
+df -h | grep /mnt/boot
 mkdir /mnt/home
 mount /dev/volgroup0/lv_home /mnt/home
 pacstrap -i /mnt base
     Y
+mkdir -p /mnt/etc
 genfstab -U -p /mnt >> /mnt/etc/fstab
 cat /mnt/etc/fstab
 arch-chroot /mnt
+# If the chrooting does not work rerun pacstrap, if it still does not run the commands before pinata comment and then run chroot command again
+mkdir -p /mnt/proc /mnt/sys /mnt/dev /mnt/run
+mount --types proc /proc /mnt/proc
+mount --rbind /sys /mnt/sys
+mount --rbind /dev /mnt/dev
+mount --rbind /run /mnt/run
+# pinata
 passwd
     password
     password
@@ -110,6 +122,7 @@ nvim /etc/locale.gen
 locale-gen
 pacman -S efibootmgr
 nvim /etc/default/grub
+# The only things you will probably have to actually change in grub file is the GRUB_CMDLINE_DEFAULT and uncommenting the GRUB_ENABLE_CRYPTODISK=y line
     # GRUB boot loader configuration
         GRUB_DEFAULT=0
         GRUB_TIMEOUT=5
@@ -119,7 +132,7 @@ nvim /etc/default/grub
         # Preload both GPT and MBR modules so that they are not missed
         GRUB_PRELOAD_MODULES="part_gpt part_msdos"
         # Uncomment to enable booting from LUKS encrypted devices
-        #GRUB_ENABLE_CRYPTODISK=y
+        GRUB_ENABLE_CRYPTODISK=y
         # Set to 'countdown' or 'hidden' to change timeout behavior,
         # press ESC key to display menu.
         GRUB_TIMEOUT_STYLE=menu
@@ -165,7 +178,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 (If you want to) systemctl enable sshd
 exit
-umount -a OR(dont write the OR or this stuff in bracket literally lol) umount -R /mnt
+umount -a OR umount -R /mnt
 ignore errors (unless way too unusual)
 reboot/systemctl reboot/sudo systemctl reboot
 sudo pacman -S git
