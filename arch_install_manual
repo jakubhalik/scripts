@@ -6,7 +6,14 @@
 pacman-key --init
 pacman-key --populate archlinux
 gpg --keyserver-options auto-key-retrieve --verify archlinux-2024.05.01-x86_64.iso.sig
+sudo umount /dev/sdb1
+cd path_to_arch_iso
+sudo dd if=archlinux-2024.05.01-x86_64.iso of=/dev/sdb1 bs=4M status=progress oflag=sync
 # After starting the arch installation
+cat /sys/firmware/fw_platform_size OR cat/sys/firmware/efi/fw_platform_size
+# If the command returns 64, then system is booted in UEFI mode and has a 64-bit x64 UEFI. If the command returns 32, then system is booted in UEFI mode and has a 32-bit IA32 UEFI; while this is supported, it will limit the boot loader choice to systemd-boot and GRUB. If the file does not exist, the system may be booted in BIOS (or CSM) mode. If the system did not boot in the mode you desired (UEFI vs BIOS), refer to your motherboard's manual.
+# Boot in UEFI, not in legacy mode
+ls /sys/firmware/efi
 ip addr show
 lsblk
 fdisk /dev/sda
@@ -71,16 +78,19 @@ useradd -m -g users -G wheel x
 passwd x
     password
     password
+pacman-key --init
+pacman-key --populate archlinux
+pacman-key --refresh-keys
+pacman -S sudo
 pacman -S base-devel
 pacman -S dosfstools
 pacman -S grub
 pacman -S lvm2
 pacman -S mtools
 pacman -S vim
-pacman -S nvim
+pacman -S neovim
 pacman -S networkmanager
 pacman -S openssh
-pacman -S sudo
 pacman -S linux
 pacman -S linux-headers
 pacman -S linux-lts
@@ -88,7 +98,9 @@ pacman -S linux-lts-headers
 pacman -S linux-firmware
 lspci
 pacman -S the appropriate driver for your GPU/what you have for graphics
-maybe pacman -S libva-mesa-driver
+(If thinkpad T430: pacman -S xf86-video-intel)
+pacman -S mesa
+pacman -S libva-mesa-driver
 nvim /etc/mkinitcpio.conf
     add encrypt lvm2 between block and filesystems in HOOKS
 mkinitcpio -p linux
@@ -96,6 +108,7 @@ mkinitcpio -p linux-lts
 nvim /etc/locale.gen
     en_US.UTF-8 UTF-8
 locale-gen
+pacman -S efibootmgr
 nvim /etc/default/grub
     # GRUB boot loader configuration
         GRUB_DEFAULT=0
@@ -180,7 +193,7 @@ sudo pacman -S xwallpaper
 sudo pacman -S python-pywall
 cp /etc/x11/xinit/xinitrc ~/.xinitrc
 nvim .xinitrc
-    #!/bin/sh
+#!/bin/sh
     userresources=$HOME/.Xresources
     usermodmap=$HOME/.Xmodmap
     sysresources=/etc/X11/xinit/.Xresources
@@ -206,7 +219,9 @@ nvim .xinitrc
      unset f
     fi
     $HOME/d/g/gh/scripts/wallpaper_switching.sh &
+    $HOME/d/g/gh/scripts/deleting_what_bullshit_programs_create.sh &
     xcompmgr &
+    # If you do not want the "anti-tearing" -c -f -n setting just kill the xcompmgr and start xcompmgr & but if u want the vids to play best just completely kill xcompmgr and watch the vids
     exec dwm &
     st 
 sudo pacman xorg-xrandr
