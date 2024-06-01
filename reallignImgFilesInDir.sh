@@ -30,11 +30,10 @@ for file in *.{jpg,png}; do
 					echo "Invalid response. Not deleting file $file."
 					;;
 			esac
+			continue
 			echo "Highest number file: $max_num"
 		fi
-
 		if [[ -n ${file_map[$num]} ]]; then
-			file_map[$num]+=" and $file"
 			echo "Duplicate number found: $num (Files: ${file_map[$num]})."
 			echo "Highest number file: $max_num"
 			new_num=$((max_num + 1))
@@ -47,29 +46,32 @@ for file in *.{jpg,png}; do
 
 		else 
 			file_map[$num]=$file
-		fi
-
-		if (( num > max_num )); then
-			max_num=$num
+			if (( num > max_num )); then
+				max_num=$num
+			fi
 		fi
 	fi
 done
 
-for ((i=0; i<max_num; i++)); do
-	if [[ ! ${file_map[$i]} ]]; then
-		echo "Missing file for number $i."
-		missing_num=$i
-		break
-	fi
+missing_found=1
+while [[ $missing_found -eq 1 ]]; do
+	missing_found=0
+	for ((i=0; i<max_num; i++)); do
+		if [[ ! ${file_map[$i]} ]]; then
+			echo "Missing file for number $i."
+			highest_file=${file_map[$max_num]}
+			extension=${highest_file##*.}
+			new_file="$i.$extension"
+			mv "$highest_file" "$new_file"
+			echo "Renamed file $highest_file to $new_file to fill missing number."
+			unset file_map[$max_num]
+			file_map[$i]=$new_file
+			max_num=$((max_num -1))
+			missing_found=1
+			break
+		fi
+	done
 done
-
-if [[ -n $missing_num ]]; then
-	highest_file=${file_map[$max_num]}
-	extension=${highest_file##*.}
-	new_file="$missing_num.$extension"
-	mv "$highest_file" "$new_file"
-	echo "Renamed file $highest_file to $new_file to fill missing number."
-fi
 
 echo "All checks passed or my action changed everything that you told me to change. Unless you said no to any request where I have you an option all files are correctly sequenced from 0 to $max_num."
 
