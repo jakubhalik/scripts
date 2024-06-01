@@ -258,6 +258,7 @@ yay -S ttf-jetbrains-mono
 chmod +x ~/.xinitrc
 ls -l /usr/bin/X
 journalctl -xe
+startx
 xrandr --output Virtual-1 --mode 1920x1080
 sudo pacman -S dash
 sudo chsh -s /bin/dash x
