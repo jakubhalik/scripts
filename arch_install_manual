@@ -189,7 +189,7 @@ git clone https://github.com/bugswriter/st.git
 ls
 cd dwm
 sudo make clean install
-sudo pacman -S libxinerama
+sudo pacman -S libxinerama libx11 libxft libxinerama dmenu
 sudo make clean install
 ..
 cd st
@@ -201,7 +201,11 @@ sudo pacman -S xcompmgr
 sudo pacman -S ttf-jetbrains-nano ttf-font-awesome
 sudo pacman -S xsel
 sudo pacman -S xwallpaper
-sudo pacman -S python-pywall
+git clone https://aur.archlinux.org/yay.git
+cd yay
+pacman -S go
+makepkg -si
+sudo pacman -S python-pywal
 cp /etc/x11/xinit/xinitrc ~/.xinitrc
 nvim .xinitrc
 #!/bin/sh
@@ -235,6 +239,24 @@ nvim .xinitrc
     # If you do not want the "anti-tearing" -c -f -n setting just kill the xcompmgr and start xcompmgr & but if u want the vids to play best just completely kill xcompmgr and watch the vids
     exec dwm &
     st 
-sudo pacman xorg-xrandr
+sudo pacman -S xorg-xinit
+sudo pacman -S xorg-xrandr
+sudo pacman -S xorg-server
+sudo pacman -S xorg-apps xorg-auth xorg-server-common
+cd ~/
+mkdir -p d/g/gh
+cd d/g/gh
+git clone https://github.com/jakubhalik/scripts.git
+cp .xinitrc ~/.xinitrc
+cp .zshrc ~/.zshrc
+cp .bashrc ~/.bashrc
+source ~/.zshrc
+szb
+u
+yu
+yay -S ttf-jetbrains-mono
+chmod +x ~/.xinitrc
+ls -l /usr/bin/X
+journalctl -xe
 xrandr --output Virtual-1 --mode 1920x1080
 
