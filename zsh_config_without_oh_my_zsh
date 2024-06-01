@@ -1,6 +1,22 @@
 bindkey -v
+
 #source ~/d/g/gh/scripts/generateAliases.sh
 #source ~/d/g/gh/scripts/generateAliases.zsh
+
+HISTSIZE=9999999999999999999999
+SAVEHIST=9999999999999999999999
+HISTFILE=~/.zsh_history
+
+PROMPT='%F{green}%n@%m %F{blue}%1~ %# %F{none}'
+
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' menu select=2
+eval "$(zsh-autosuggest-start)"
+
 # Aliases over .zshrc and .bashrc being automatically the same start
 while read -r alias_definition; do 
     eval "alias $alias_definition"
@@ -249,5 +265,6 @@ done << EOF
     vl='cd ~/v/l'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
+
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
