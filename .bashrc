@@ -250,5 +250,9 @@ done << EOF
     ic='~/d/g/gh/scripts/install_all_vids_from_a_youtube_channel.sh'
 
     vl='cd ~/v/l'
+
+    va='cs; vim arch_install_manual'
+
+    na='cs; nv arch_install_manual'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
