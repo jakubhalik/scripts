@@ -262,3 +262,5 @@ xrandr --output Virtual-1 --mode 1920x1080
 sudo pacman -S dash
 sudo chsh -s /bin/dash x
 zsh
+sudo pacman -S zsh-syntax-highlighting
+echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
