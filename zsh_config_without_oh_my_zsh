@@ -3,8 +3,8 @@ bindkey -v
 #source ~/d/g/gh/scripts/generateAliases.sh
 #source ~/d/g/gh/scripts/generateAliases.zsh
 
-export HISTSIZE=9999999999999999999999
-export SAVEHIST=9999999999999999999999
+export HISTSIZE=99999
+export SAVEHIST=99999
 export HISTFILE=~/.zsh_history
 
 #if [ -f "$HOME/.cache/wal/colors.sh" ]; then
