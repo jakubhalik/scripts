@@ -3,12 +3,18 @@ bindkey -v
 #source ~/d/g/gh/scripts/generateAliases.sh
 #source ~/d/g/gh/scripts/generateAliases.zsh
 
-HISTSIZE=9999999999999999999999
-SAVEHIST=9999999999999999999999
-HISTFILE=~/.zsh_history
+export HISTSIZE=9999999999999999999999
+export SAVEHIST=9999999999999999999999
+export HISTFILE=~/.zsh_history
 
-(cat ~/.cache/wal/sequences &)
+if [ -f "$HOME/.cache/wal/colors.sh" ]; then
+    source "$HOME/.cache/wal/colors.sh"
+fi
 PROMPT='[%F{color1}%n@%m %F{color2}%~%F{none}] '
+
+setopt append_history        # Append history to the file (not overwrite it)
+setopt share_history         # Share history across terminals
+setopt inc_append_history    # Immediately append to the history file, not just when the session ends
 
 autoload -Uz compinit
 compinit
