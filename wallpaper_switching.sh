@@ -11,6 +11,7 @@ while true; do
 	xwallpaper --zoom "$SELECTED_WALLPAPER"
 	# wal is from python-pywall
 	wal -i "$SELECTED_WALLPAPER"
+	source "$HOME/.cache/wal/colors.sh"
 	RANDOM_INTERVAL=$((RANDOM % 91 + 90))
 	sleep $RANDOM_INTERVAL
 done
