@@ -7,7 +7,7 @@ HISTSIZE=9999999999999999999999
 SAVEHIST=9999999999999999999999
 HISTFILE=~/.zsh_history
 
-PROMPT='%F{green}%n@%m %F{blue}%1~ %# %F{none}'
+PROMPT='[%F{green}%n@%m %F{blue}~%F{none}]'
 
 autoload -Uz compinit
 compinit
