@@ -7,7 +7,8 @@ HISTSIZE=9999999999999999999999
 SAVEHIST=9999999999999999999999
 HISTFILE=~/.zsh_history
 
-PROMPT='[%F{green}%n@%m %F{blue}~%F{none}]'
+(cat ~/.cache/wal/sequences &)
+PROMPT='[%F{color1}%n@%m %F{color2}~%F{none}]'
 
 autoload -Uz compinit
 compinit
