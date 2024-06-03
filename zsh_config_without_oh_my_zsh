@@ -400,7 +400,16 @@ done << EOF
 
     vl='cd ~/v/l'
 
-    sco='source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+    va='cs; vim arch_install_manual'
+
+    na='cs; nv arch_install_manual'
+
+    sl='systemctl suspend; lo'
+
+    bs='acpi'
+
+    lsd='lsblk'
+
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 sco
