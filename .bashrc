@@ -264,5 +264,8 @@ done << EOF
     ft='feh -g 640x480 --auto-zoom --thumbnails'
 
     sxt='sxiv -t'
+
+    mo='mogrify -resize 800x800 -path'
+
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
