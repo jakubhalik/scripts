@@ -362,6 +362,8 @@ done << EOF
     lsd='lsblk'
 
     ft='feh -g 640x480 --auto-zoom --thumbnails'
+
+    sxt='sxiv -t'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 #
