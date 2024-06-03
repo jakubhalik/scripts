@@ -267,5 +267,7 @@ done << EOF
 
     mo='mogrify -resize 800x800 -path'
 
+    nf='~/d/g/gh/scripts/normal_size_feh.sh'
+
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
