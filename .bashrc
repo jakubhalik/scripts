@@ -254,5 +254,11 @@ done << EOF
     va='cs; vim arch_install_manual'
 
     na='cs; nv arch_install_manual'
+
+    sl='systemctl suspend; lo'
+
+    bs='acpi'
+
+    lsd='lsblk'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
