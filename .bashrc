@@ -260,5 +260,7 @@ done << EOF
     bs='acpi'
 
     lsd='lsblk'
+
+    ft='feh -g 640x480 --auto-zoom --thumbnails'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
