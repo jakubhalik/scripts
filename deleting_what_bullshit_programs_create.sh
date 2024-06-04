@@ -1,4 +1,3 @@
-
 #!/bin/bash
 while true; do
 	inotifywait -e create -r ~/Documents ~/Desktop ~/Music ~/Downloads
