@@ -8,4 +8,4 @@ sudo iptables -A INPUT -p tcp --dport 8082 -j ACCEPT
 sudo iptables-save | sudo tee /etc/iptables/iptables.rules > /dev/null
 sudo systemctl enable iptables
 sudo systemctl start iptables
-
+sudo iptables -L
