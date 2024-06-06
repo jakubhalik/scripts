@@ -151,7 +151,7 @@ done << EOF
 
     vs='yt-dlp bestvideo+bestaudio'
 
-    hi='history'
+    hi='cat ~/.zsh_history'
 
     x='vim .xinitrc'
 
@@ -213,6 +213,14 @@ done << EOF
 
     vt='o; vim tech.md'
 
+    ot2='o; nv tech2.md'
+
+    vt2='o; vim tech2.md'
+    
+    ot3='o; nv tech3.md'
+
+    vt3='o; vim tech3.md'
+
     oe='o; nv everything.md'
 
     fi='firefox -no-remote -ProfileManager'
@@ -269,5 +277,8 @@ done << EOF
 
     nf='feh --zoom 20 --draw-filename'
 
+    wip='curl ipinfo.io/ip'    
+
+    gr='docker exec -it gitlab-server gitlab-rails console'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end

@@ -3,6 +3,8 @@ bindkey -v
 #source ~/d/g/gh/scripts/generateAliases.sh
 #source ~/d/g/gh/scripts/generateAliases.zsh
 
+export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
+
 export HISTSIZE=99999
 export SAVEHIST=99999
 export HISTFILE=~/.zsh_history
@@ -300,7 +302,7 @@ done << EOF
 
     vs='yt-dlp bestvideo+bestaudio'
 
-    hi='history'
+    hi='cat ~/.zsh_history'
 
     x='vim .xinitrc'
 
@@ -362,6 +364,14 @@ done << EOF
 
     vt='o; vim tech.md'
 
+    ot2='o; nv tech2.md'
+
+    vt2='o; vim tech2.md'
+    
+    ot3='o; nv tech3.md'
+
+    vt3='o; vim tech3.md'
+
     oe='o; nv everything.md'
 
     fi='firefox -no-remote -ProfileManager'
@@ -417,6 +427,13 @@ done << EOF
     mo='mogrify -resize 800x800 -path'
 
     nf='feh --zoom 20 --draw-filename'
+
+    wip='curl ipinfo.io/ip'    
+
+    gr='docker exec -it gitlab-server gitlab-rails console'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 sco
+
+export GITLAB_HOME=/srv/gitlab
+
