@@ -1,24 +1,19 @@
-version: '3.9'
+version: "3.8"
 services:
- gitlab:
-   image: gitlab/gitlab-ee:latest
-   container_name: gitlab
-   restart: always
-   hostname: 'gitlab.jakubhalik.org'
-   environment:
-     GITLAB_HOME: /srv/gitlab
-     GITLAB_OMNIBUS_CONFIG: |
-       external_url 'https://gitlab.jakubhalik.org'
-       nginx['ssl_certificate'] = "/etc/letsencrypt/live/gitlab.jakubhalik.org/fullchain.pem"
-       nginx['ssl_certificate_key'] = "/etc/letsencrypt/live/gitlab.jakubhalik.org/privkey.pem"
-   ports:
-     - '80:80'
-     - '443:443'
-     - '22:22'
-   volumes:
-     - '/srv/gitlab/config:/etc/gitlab'
-     - '/srv/gitlab/logs:/var/log/gitlab'
-     - '/srv/gitlab/data:/var/opt/gitlab'
-     - '/etc/letsencrypt:/etc/letsencrypt'
-   shm_size: '256m'
-
+  gitlab-server:
+    image: "gitlab/gitlab-ce"
+    container_name: gitlab-server
+    hostname: "gitlab.jakubhalik.org"
+    ports:
+      - "8080:80"
+      - "8443:443"
+      - "822:22"
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab.jakubhalik.org'
+        puma['work_processes'] = 0
+    volumes:
+      - "/srv/gitlab/config:/etc/gitlab"
+      - "/srv/gitlab/logs:/var/log/gitlab"
+      - "/srv/gitlab/data:/var/opt/gitlab"
+      - "/etc/letsencrypt:/etc/letsencrypt"
