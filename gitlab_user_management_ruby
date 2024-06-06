@@ -1,0 +1,15 @@
+docker exec -it gitlab-server gitlab-rails console
+user = User.find_by(username: 'root')
+user.password = 'new password'
+user.password_confirmation = 'new password'
+if user.save
+ puts "Password updated successfully."
+else
+ puts "Failed to update password: #{user.errors.full_messages.join(", ")}"
+end
+# Do what is below only after creating a new account in the gitlab client and instead of the word userishnamish use the actual name of the account u created
+User.all.each { |user| puts "#{user.id} - #{user.username} - #{user.state}" }
+user = User.find_by(username: 'userishnamish')
+user.activate
+user.save!
+exit
