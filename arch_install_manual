@@ -198,7 +198,7 @@ sudo make clean install
 cd dmenu
 sudo make clean install
 sudo pacman -S xcompmgr
-sudo pacman -S ttf-jetbrains-nano ttf-font-awesome
+sudo pacman -S ttf-font-awesome
 sudo pacman -S xsel
 sudo pacman -S xwallpaper
 git clone https://aur.archlinux.org/yay.git
@@ -242,13 +242,13 @@ nvim .xinitrc
 sudo pacman -S xorg-xinit
 sudo pacman -S xorg-xrandr
 sudo pacman -S xorg-server
-sudo pacman -S xorg-apps xorg-auth xorg-server-common
+sudo pacman -S xorg-apps xorg-server-common
 cd ~/
 mkdir -p d/g/gh
 cd d/g/gh
 git clone https://github.com/jakubhalik/scripts.git
 cp .xinitrc ~/.xinitrc
-cp .zshrc ~/.zshrc
+cp zsh_config_without_oh_my_zsh ~/.zshrc
 cp .bashrc ~/.bashrc
 source ~/.zshrc
 szb
