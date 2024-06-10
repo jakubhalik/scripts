@@ -297,6 +297,8 @@ done << EOF
 
     ngt='sudo nginx -t'
 
+    nsta='sy status ng'
+
     dr='docker' 
 
     drn='sy reload dr'
@@ -313,6 +315,10 @@ done << EOF
 
     dru='dr compose up'
 
+    drsta='sy status dr'
+
+    sn='sy restart systemd-networkd'
+
     ipt='iptables' 
 
     ir='sy reload ipt' 
@@ -324,6 +330,8 @@ done << EOF
     is='sy start ipt'
 
     ire='sy restart ipt'
+
+    ista='sy status ipt'
 
     il='sudo ipt -L --line-numbers'
 
@@ -386,6 +394,8 @@ done << EOF
     nl0=' sudo tail -f /var/log/nginx/access.log'
 
     nl1=' sudo tail -f /var/log/nginx/error.log'
+
+    it=' nmap -Pn 86.49.243.46 -p 80,443,8080'
 
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end

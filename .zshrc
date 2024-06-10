@@ -417,6 +417,8 @@ done << EOF
 
     drsta='sy status dr'
 
+    sn='sy restart systemd-networkd'
+
     ipt='iptables' 
 
     ir='sy reload ipt' 
