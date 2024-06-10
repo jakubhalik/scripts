@@ -131,7 +131,7 @@ done << EOF
 
     rbzb='rm -rf ~/.bashrc; bb; zb'
 
-    zbg='rm -rf ~/d/g/gh/scripts/.zshrc; rm -rf ~/d/g/gh/scripts/.bashrc; cp ~/.zshrc ~/d/g/gh/scripts/.zshrc; cp ~/.bashrc ~/d/g/gh/scripts/.bashrc'
+    zbg='rm ~/d/g/gh/scripts/.zshrc ~/d/g/gh/scripts/.bashrc ~/d/g/gh/scripts/zsh_config_without_oh_my_zsh; cp ~/.zshrc ~/d/g/gh/scripts/.zshrc; cp ~/.zshrc ~/d/g/gh/scripts/zsh_config_without_oh_my_zsh; cp ~/.bashrc ~/d/g/gh/scripts/.bashrc'
 
     gzb='rm -rf ~/.zshrc; rm -rf ~/.bashrc; cp ~/d/g/gh/scripts/.zshrc ~/.zshrc; bb'
 
@@ -396,6 +396,10 @@ done << EOF
     nl1=' sudo tail -f /var/log/nginx/error.log'
 
     it=' nmap -Pn 86.49.243.46 -p 80,443,8080'
+
+    ot4='nv ~/d/g/gh/obsidian-notes/tech4.md'
+
+    vt4='vim ~/d/g/gh/obsidian-notes/tech4.md'
 
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end

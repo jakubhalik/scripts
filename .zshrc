@@ -1,108 +1,159 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-# export ZDOTDIR="$HOME/.config/zsh"
-# export PATH=$HOME/.local/bin:$PATH
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="alanpeabody"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
-
 bindkey -v
 
-# User configuration
+#source ~/d/g/gh/scripts/generateAliases.sh
+#source ~/d/g/gh/scripts/generateAliases.zsh
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export HISTSIZE=99999
+export SAVEHIST=99999
+export HISTFILE=~/.zsh_history
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+#if [ -f "$HOME/.cache/wal/colors.sh" ]; then
+#    source "$HOME/.cache/wal/colors.sh"
+#fi
+PROMPT='[%F{#ec4899}%n@%m %F{#67e8f9}%~%F{none}] '
+#fee2e2
+#fecaca
+#fca5a5
+#f87171
+#ef4444
+#ffedd5
+#fed7aa
+#fdba74
+#fb923c
+#f97316
+#ea580c
+#fef3c7
+#fde68a
+#fcd34d
+#fbbf24
+#f59e0b
+#d97706
+#fef9c3
+#fef08a
+#fde047
+#facc15
+#eab308
+#ecfccb
+#d9f99d
+#bef264
+#a3e635
+#84cc16
+#65a30d
+#4d7c0f
+#3f6212
+#365314
+#1a2e05
+#dcfce7
+#bbf7d0
+#86efac
+#4ade80
+#22c55e
+#16a34a
+#15803d
+#166534
+#14532d
+#052e16
+#d1fae5
+#a7f3d0
+#6ee7b7
+#34d399
+#10b981
+#059669
+#047857
+#065f46
+#064e3b
+#022c22
+#ccfbf1
+#99f6e4
+#5eead4
+#2dd4bf
+#14b8a6
+#0d9488
+#0f766e
+#115e59
+#134e4a
+#042f2e
+#cffafe
+#a5f3fc
+#67e8f9
+#22d3ee
+#06b6d4
+#0891b2
+#0e7490
+#bae6fd
+#7dd3fc
+#38bdf8
+#0ea5e9
+#0284c7
+#0369a1
+#93c5fd
+#60a5fa
+#3b82f6
+#2563eb
+#1d4ed8
+#1e40af
+#a5b4fc
+#818cf8
+#6366f1
+#4f46e5
+#4338ca
+#3730a3
+#c4b5fd
+#a78bfa
+#8b5cf6
+#7c3aed
+#6d28d9
+#5b21b6
+#4c1d95
+#2e1065
+#d8b4fe
+#c084fc
+#a855f7
+#9333ea
+#7e22ce
+#6b21a8
+#581c87
+#3b0764
+#f0abfc
+#e879f9
+#d946ef
+#c026d3
+#a21caf
+#86198f
+#701a75
+#4a044e
+#fbcfe8
+#f9a8d4
+#f472b6
+#ec4899
+#db2777
+#be185d
+#9d174d
+#831843
+#500724
+#fecdd3
+#fda4af
+#fb7185
+#f43f5e
+#e11d48
+#be123c
+#9f1239
+#881337
+#4c0519
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+setopt append_history        # Append history to the file (not overwrite it)
+setopt share_history         # Share history across terminals
+setopt inc_append_history    # Immediately append to the history file, not just when the session ends
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-#
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' menu select=2
+eval "$(zsh-autosuggest-start)"
 
 # Aliases over .zshrc and .bashrc being automatically the same start
 while read -r alias_definition; do 
@@ -231,7 +282,7 @@ done << EOF
 
     rbzb='rm -rf ~/.bashrc; bb; zb'
 
-    zbg='rm -rf ~/d/g/gh/scripts/.zshrc; rm -rf ~/d/g/gh/scripts/.bashrc; cp ~/.zshrc ~/d/g/gh/scripts/.zshrc; cp ~/.bashrc ~/d/g/gh/scripts/.bashrc'
+    zbg='rm ~/d/g/gh/scripts/.zshrc ~/d/g/gh/scripts/.bashrc ~/d/g/gh/scripts/zsh_config_without_oh_my_zsh; cp ~/.zshrc ~/d/g/gh/scripts/.zshrc; cp ~/.zshrc ~/d/g/gh/scripts/zsh_config_without_oh_my_zsh; cp ~/.bashrc ~/d/g/gh/scripts/.bashrc'
 
     gzb='rm -rf ~/.zshrc; rm -rf ~/.bashrc; cp ~/d/g/gh/scripts/.zshrc ~/.zshrc; bb'
 
@@ -497,6 +548,13 @@ done << EOF
 
     it=' nmap -Pn 86.49.243.46 -p 80,443,8080'
 
+    ot4='nv ~/d/g/gh/obsidian-notes/tech4.md'
+
+    vt4='vim ~/d/g/gh/obsidian-notes/tech4.md'
+
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
-#
+sco
+
+export GITLAB_HOME=/srv/gitlab
+
