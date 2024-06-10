@@ -180,7 +180,6 @@ ignore errors (unless way too unusual)
 reboot/systemctl reboot/sudo systemctl reboot
 sudo pacman -S git
 sudo pacman -S alsa-utils
-sudo pacman -S alsamixer
 mkdir -p .local/src
 cd .local/src
 git clone https://github.com/bugswriter/dwm.git
