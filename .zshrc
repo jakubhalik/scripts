@@ -380,6 +380,121 @@ done << EOF
     wip='curl ipinfo.io/ip'    
 
     gr='docker exec -it gitlab-server gitlab-rails console'
+
+    ng='nginx'
+
+    rn='sy reload ng'
+
+    rsn='sy restart ng'
+
+    rs='sy start ng'
+
+    rst='sy stop ng'
+
+    rn2='sudo nginx -s reload'
+
+    en='sy enable ng'
+
+    ngt='sudo nginx -t'
+
+    nsta='sy status ng'
+
+    dr='docker' 
+
+    drn='sy reload dr'
+
+    drst='sy stop dr'
+
+    drs='sy start dr'
+
+    drsn='sy restart dr'
+
+    dren='sy enable dr'
+
+    drd='dr compose down'
+
+    dru='dr compose up'
+
+    drsta='sy status dr'
+
+    ipt='iptables' 
+
+    ir='sy reload ipt' 
+
+    ie='sy enable ipt'
+
+    ist='sy stop ipt'
+
+    is='sy start ipt'
+
+    ire='sy restart ipt'
+
+    ista='sy status ipt'
+
+    il='sudo ipt -L --line-numbers'
+
+    i0='sudo ipt -P INPUT DROP'
+
+    i01='sudo ipt -P FORWARD DROP'
+
+    i02='sudo ipt -P OUTPUT ACCEPT'
+
+    i1='sudo ipt -I INPUT 1 -i lo -j ACCEPT'
+
+    i2='sudo ipt -I OUTPUT 1 -o lo -j ACCEPT'
+
+    i3='sudo ipt -A INPUT -p udp --sport 53 -j ACCEPT'
+
+    i4='sudo ipt -A OUTPUT -p udp --dport 53 -j ACCEPT'
+
+    i5='sudo ipt -A INPUT -i lo -j ACCEPT'
+
+    i6='sudo ipt -A OUTPUT -o lo -j ACCEPT'
+
+    i7='sudo ipt -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT'
+
+    i8='sudo ipt -A INPUT -p tcp --dport 80 -j ACCEPT'
+
+    i9='sudo ipt -A INPUT -p tcp --dport 443 -j ACCEPT'
+
+    i10='sudo ipt -A INPUT -p tcp --dport 22 -j ACCEPT'
+
+    i11='sudo ipt -A INPUT -m conntrack --ctstate INVALID -j DROP'
+
+    i12='sudo ipt -I INPUT -p tcp --dport 8080 -j ACCEPT'
+
+    i13='sudo ipt -I INPUT -p tcp --dport 8443 -j ACCEPT' 
+
+    i14='sudo ipt -I INPUT -p tcp --dport 822 -j ACCEPT'
+    
+    isa='sudo iptables-save | sudo tee /etc/iptables/iptables.rules'    
+
+    isa2='sudo iptables-save > /etc/iptables/rules.v4'
+
+    ill='sudo ipt -L'
+
+    iln='ill -n'
+
+    il2='sudo ipt -L -v'
+
+    il3='sudo ipt -t nat -L -v'
+
+    il4='sudo ipt -L -n -v | grep 443'
+
+    il5='sudo ipt -I INPUT 1 -j LOG --log-prefix "IPTables-Dropped: "'
+    
+    il6='dmesg | grep IPTables-Dropped'
+
+    il7='sudo tail -f /var/log/kern.log | grep IPTables-Dropped'
+
+    i6l='sudo ip6tables -L'
+
+    nl0=' sudo tail -f /var/log/nginx/access.log'
+
+    nl1=' sudo tail -f /var/log/nginx/error.log'
+
+    it=' nmap -Pn 86.49.243.46 -p 80,443,8080'
+
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 #
