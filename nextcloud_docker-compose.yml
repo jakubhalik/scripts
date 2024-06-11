@@ -8,13 +8,13 @@ services:
     volumes:
       - db:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_PASSWORD=
+      - MYSQL_ROOT_PASSWORD=p
+      - MYSQL_PASSWORD=p
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
 
   app:
-    image: nextcloud
+    image: nextcloud:apache
     ports:
       - "8081:80" # Changed from 8082 to 8081 to avoid conflict
       - "9443:443" # Optional if you're directly exposing SSL, not typical
