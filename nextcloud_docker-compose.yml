@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  db:
+    image: mariadb
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+
+  app:
+    image: nextcloud
+    ports:
+      - "8081:80" # Changed from 8082 to 8081 to avoid conflict
+      - "81443:443" # Optional if you're directly exposing SSL, not typical
+      - "8122:22" # Optional for SSH if applicable
+    links:
+      - db
+    volumes:
+      - nextcloud:/var/www/html
+    restart: always
+
+volumes:
+  db:
+    driver: local
+    driver_opts:
+      type: none
+      device: /srv/nextcloud/db
+      o: bind
+  nextcloud:
+    driver: local
+    driver_opts:
+      type: none
+      device: /srv/nextcloud/nextcloud
+      o: bind
