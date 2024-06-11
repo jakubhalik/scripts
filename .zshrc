@@ -300,7 +300,7 @@ done << EOF
 
     ass='m; au -af scaletempo -speed 1.5 -shuffle *.mp3'
 
-    vs='yt-dlp bestvideo+bestaudio'
+    vs='sudo yt-dlp bestvideo+bestaudio'
 
     hi='cat ~/.zsh_history'
 
@@ -551,6 +551,8 @@ done << EOF
     ot4='nv ~/d/g/gh/obsidian-notes/tech4.md'
 
     vt4='vim ~/d/g/gh/obsidian-notes/tech4.md'
+
+    czt='sudo timedatectl set-timezone 'Europe/Prague''
 
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
