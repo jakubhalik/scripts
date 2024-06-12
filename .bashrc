@@ -15,7 +15,7 @@ done << EOF
 
     clo='tty-clock'
 
-    cf='xsel --clipboard <'
+    cf='sudo xsel --clipboard <'
 
     ci='xsel --clipboard --input'
 

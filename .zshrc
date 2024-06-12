@@ -12,7 +12,6 @@ export HISTFILE=~/.zsh_history
 #if [ -f "$HOME/.cache/wal/colors.sh" ]; then
 #    source "$HOME/.cache/wal/colors.sh"
 #fi
-#PROMPT='[%F{#22c55e}%n@%m %F{#14b8a6}%~%F{none}] '
 PROMPT='[%F{#22c55e}%n@%m %F{#14b8a6}%~%F{none}] '
 #fee2e2
 #fecaca
