@@ -401,6 +401,10 @@ done << EOF
 
     vt4='vim ~/d/g/gh/obsidian-notes/tech4.md'
 
+    ot5='nv ~/d/g/gh/obsidian-notes/tech5.md'
+
+    vt5='vim ~/d/g/gh/obsidian-notes/tech5.md'
+
     czt='sudo timedatectl set-timezone 'Europe/Prague''
 
 EOF 
