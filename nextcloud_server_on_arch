@@ -1,0 +1,25 @@
+# Assuming the aliases from .zshrc OR .bashrc
+i nginx-mainline OR nginx
+sudo systemctl start nginx
+sudo systemctl enable nginx
+i mariadb
+sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
+sudo mysql_secure_installation
+sudo mysql -u root
+i php php-fpm php-gd php-intl
+sudo systemctl reload nginx
+sudo systemctl start php-fpm
+sudo systemctl enable php-fpm
+i nextcloud
+sudo chown -R http:http /usr/share/webapps/nextcloud/
+sudo mkdir /etc/nginx/conf.d
+sudo chown http:http /var/nextcloud
+sudo chmod 750 /var/nextcloud
+sudo mkdir -p /usr/share/webapps/nextcloud/data
+sudo chown -R http:http /usr/share/webapps/nextcloud/{apps,data}
+sudo chmod 750 /usr/share/webapps/nextcloud/{apps,data}
+sudo systemctl edit php-fpm.service
+sudo systemctl restart php-fpm
+sudo systemctl restart nginx
