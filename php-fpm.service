@@ -1,0 +1,6 @@
+# U get into the file in which u wanna paste this or a variation of this with command: sudo systemctl edit php-fpm.service
+[Service]
+ReadWritePaths = /usr/share/webapps/nextcloud/apps
+ReadWritePaths = /usr/share/webapps/nextcloud/data
+ReadWritePaths = /etc/webapps/nextcloud/config
+ReadWritePaths = /var/nextcloud
