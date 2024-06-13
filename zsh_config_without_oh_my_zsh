@@ -558,6 +558,10 @@ done << EOF
 
     czt='sudo timedatectl set-timezone 'Europe/Prague''
 
+    fl='cd ~/filebrowser'
+
+    fr='fl; ./run_filebrowser.sh'
+
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 sco
