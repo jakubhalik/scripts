@@ -411,5 +411,7 @@ done << EOF
 
     fr='fl; ./run_filebrowser.sh'
 
+    ra='openssl rand -base64 16'
+
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
