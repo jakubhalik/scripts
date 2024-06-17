@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo mkdir ~/filebrowser
-cd filebrowser
+cd ~/filebrowser
 curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
 echo "
     {
