@@ -218,7 +218,7 @@ echo "
     POSTGRES_DATA_PATH=./volumes/db/var/lib/postgresql/data
 
     POSTGRES_USER=mmuser
-    POSTGRES_PASSWORD=a5m6c9c9
+    POSTGRES_PASSWORD=password
     POSTGRES_DB=mattermost
 
     # Nginx
