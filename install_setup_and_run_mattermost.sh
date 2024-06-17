@@ -1,5 +1,24 @@
 #!/bin/bash
 
+# For the case of you poor thing rerunning the script after some mistakes I will run the commands till pinata, if u do not need this comment all until pinata out
+docker ps -a --filter "name=mattermost"  # List all Mattermost-related containers
+docker stop $(docker ps -a -q --filter "name=mattermost")  # Stop all Mattermost-related containers
+docker rm $(docker ps -a -q --filter "name=mattermost")  # Remove all Mattermost-related containers
+docker volume ls --filter "name=mattermost"  # List all Mattermost-related volumes
+docker volume rm $(docker volume ls -q --filter "name=mattermost")  # Remove all Mattermost-related volumes
+docker network ls --filter "name=mattermost"  # List all Mattermost-related networks
+docker network rm $(docker network ls -q --filter "name=mattermost")  # Remove all Mattermost-related networks
+rm /etc/nginx/sites-available/mattermost.jakubhalik.org
+rm /etc/nginx/sites-enabled/mattermost.jakubhalik.org
+nginx -t  # Test Nginx configuration to ensure there are no syntax errors
+systemctl restart nginx  # Restart Nginx to apply changes
+find /home/x/mattermost -type d  # Verify existence of the directory
+rm -rf /home/x/mattermost  # Remove the directory
+certbot delete --cert-name mattermost.jakubhalik.org
+nginx -t
+systemctl restart nginx
+#pinata
+
 # Ensure script is run with sudo
 if [ "$EUID" -ne 0 ]; then
   echo "Please run as root or use sudo"
