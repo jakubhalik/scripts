@@ -80,17 +80,17 @@ mkdir /home/x/mattermost
 echo "Just created mattermost directory in the home path: "
 find /home/x/mattermost
 cd /home/x/mattermost
-echo "Right now there is .gitpod.yml file that I will delete: "
-find .gitpod.yml
-rm .gitpod.yml
-echo "Removed .gitpod.yml as it is not needed for local deployment: "
-find .gitpod.yml
 echo "Right now there is supposed to be no docker directory in here: "
 find docker
 git clone https://github.com/mattermost/docker
 echo "Just cloned mattermost docker from their github: "
 find docker
 cd docker
+echo "Right now there is .gitpod.yml file that I will delete: "
+find .gitpod.yml
+rm .gitpod.yml
+echo "Removed .gitpod.yml as it is not needed for local deployment: "
+find .gitpod.yml
 echo "
     # Domain of service
     DOMAIN=mattermost.jakubhalik.org
