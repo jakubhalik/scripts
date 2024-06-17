@@ -15,7 +15,7 @@ echo "
         server_name mattermost.jakubhalik.org;
 
         location / {
-            return 301 https://$host$request_uri;  # Redirect all HTTP traffic to HTTPS
+            return 301 https://\$host\$request_uri;  # Redirect all HTTP traffic to HTTPS
         }
     }
 " > /etc/nginx/sites-available/mattermost.jakubhalik.org
@@ -39,7 +39,7 @@ echo "
         server_name mattermost.jakubhalik.org;
 
         location / {
-            return 301 https://$host$request_uri;  # Redirect all HTTP traffic to HTTPS
+            return 301 https://\$host\$request_uri;  # Redirect all HTTP traffic to HTTPS
         }
     }
 
@@ -55,13 +55,12 @@ echo "
         include /etc/letsencrypt/options-ssl-nginx.conf;
         ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
-
         location / {
             proxy_pass http://localhost:8084;
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header Host \$host;
+            proxy_set_header X-Real-IP \$remote_addr;
+            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto \$scheme;
         }
 
         error_page 500 502 503 504 /50x.html;
@@ -133,8 +132,8 @@ echo "
     CERT_PATH=./volumes/web/cert/cert.pem
     KEY_PATH=./volumes/web/cert/key-no-password.pem
     #GITLAB_PKI_CHAIN_PATH=<path_to_your_gitlab_pki>/pki_chain.pem
-    #CERT_PATH=./certs/etc/letsencrypt/live/${DOMAIN}/fullchain.pem
-    #KEY_PATH=./certs/etc/letsencrypt/live/${DOMAIN}/privkey.pem
+    #CERT_PATH=./certs/etc/letsencrypt/live/\${DOMAIN}/fullchain.pem
+    #KEY_PATH=./certs/etc/letsencrypt/live/\${DOMAIN}/privkey.pem
 
     ## Exposed ports to the host. Inside the container 80, 443 and 8443 will be used
     HTTPS_PORT=1443
@@ -176,10 +175,10 @@ echo "
 
     ## Below one can find necessary settings to spin up the Mattermost container
     MM_SQLSETTINGS_DRIVERNAME=postgres
-    MM_SQLSETTINGS_DATASOURCE=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable&connect_timeout=10
+    MM_SQLSETTINGS_DATASOURCE=postgres://\${POSTGRES_USER}:\${POSTGRES_PASSWORD}@postgres:5432/\${POSTGRES_DB}?sslmode=disable&connect_timeout=10
 
     ## Example settings (any additional setting added here also needs to be introduced in the docker-compose.yml)
-    MM_SERVICESETTINGS_SITEURL=https://${DOMAIN}
+    MM_SERVICESETTINGS_SITEURL=https://\${DOMAIN}
 " > .env
 mkdir -p ./volumes/app/mattermost/{config,data,logs,plugins,client/plugins,bleve-indexes}
 chown -R 2000:2000 ./volumes/app/mattermost
