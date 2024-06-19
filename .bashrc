@@ -413,5 +413,9 @@ done << EOF
 
     ra='openssl rand -base64 16'
 
+    csz='chsh -s /usr/bin/zsh'
+
+    csd='chsh -s /usr/bin/dash'
+
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end

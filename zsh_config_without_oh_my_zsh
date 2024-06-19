@@ -9,10 +9,15 @@ export HISTSIZE=99999
 export SAVEHIST=99999
 export HISTFILE=~/.zsh_history
 
+bindkey "^R" history-incremental-search-backward
+bindkey "^S" history-incremental-search-forward
+
 #if [ -f "$HOME/.cache/wal/colors.sh" ]; then
 #    source "$HOME/.cache/wal/colors.sh"
 #fi
+
 PROMPT='[%F{#22c55e}%n@%m %F{#14b8a6}%~%F{none}] '
+
 #fee2e2
 #fecaca
 #fca5a5
@@ -563,6 +568,10 @@ done << EOF
     fr='fl; ./run_filebrowser.sh'
 
     ra='openssl rand -base64 16'
+
+    csz='chsh -s /usr/bin/zsh'
+
+    csd='chsh -s /usr/bin/dash'
 
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
