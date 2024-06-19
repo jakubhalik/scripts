@@ -417,5 +417,7 @@ done << EOF
 
     csd='chsh -s /usr/bin/dash'
 
+    ca='calcurse'
+
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
