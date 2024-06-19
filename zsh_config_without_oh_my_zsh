@@ -575,9 +575,15 @@ done << EOF
 
     ca='calcurse'
 
+    ot6='nv ~/d/g/gh/obsidian-notes/tech6.md'
+
+    vt6='vim ~/d/g/gh/obsidian-notes/tech6.md'
+
+    ot7='nv ~/d/g/gh/obsidian-notes/tech7.md'
+
+    vt7='vim ~/d/g/gh/obsidian-notes/tech7.md'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
-sco
 
 export GITLAB_HOME=/srv/gitlab
 
