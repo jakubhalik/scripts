@@ -569,9 +569,9 @@ done << EOF
 
     ra='openssl rand -base64 16'
 
-    csz='chsh -s /usr/bin/zsh'
+    csz='chsh -s /bin/zsh'
 
-    csd='chsh -s /usr/bin/dash'
+    csd='chsh -s /bin/dash'
 
     ca='calcurse'
 
