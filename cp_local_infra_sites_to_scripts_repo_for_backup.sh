@@ -11,9 +11,9 @@ for i in "${!names[@]}"; do
 
     name="${names[$i]}"
   
-    cp /etc/nginx/sites-available/local${name}.jakubhalik.org ~/d/g/gh/scripts/local${name}.jakubhalik.org
+    cp /etc/nginx/sites-available/local${name}.jakubhalik.org /home/x/d/g/gh/scripts/local${name}.jakubhalik.org
 
-    find ~/d/g/gh/scripts/local${name}.jakubhalik.org
+    find /home/x/d/g/gh/scripts/local${name}.jakubhalik.org
 
 done
 
