@@ -5,8 +5,7 @@ server {
     server_name gitlab.jakubhalik.org;
 
     location / {
-	#return 301 https://$host$request_uri;  # Redirect all HTTP traffic to HTTPS
-	return 301 https://gitlab.jakubhalik.org:8443$request_uri;
+      return 301 https://$host$request_uri;  # Redirect all HTTP traffic to HTTPS
     }
 }
 
