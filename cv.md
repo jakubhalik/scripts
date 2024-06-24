@@ -3,12 +3,12 @@
 
 ## Skills
 
-Typescript, Javascript, Bun, Node, NextJS (app router, pages router (I hate the pages one tho, it's powerless)), React
+Typescript, Javascript, Bun, Node, NextJS (app router, pages router (hate the pages one tho, it's powerless)), React
 
     - Server Side Components (User Authentication, SHA-256 Encrypting (Layering, or not), Salting, User Management, Role Based Access Control, Dynamic Interactions with PostgreSQL Database, Interactions with different Servers),
     - Client Side Components (State Management, Local States, Global States, Hooks, Contexts, Interacting with APIs),
 
-Tailwind, ShadCN/UI, CSS (Hate when it's custom tho), SCSS, Bootstrap, MUI (Hate these 3 with passion), VueJS (Don't really like this one, it weakens my powers down and forces people into duplication),
+Tailwind, ShadCN/UI, CSS (hate when it's custom tho), SCSS, Bootstrap, MUI (hate these 3 with passion), VueJS (Don't really like this one, it weakens my powers down and forces people into duplication),
 
 SQL, PostgreSQL, Setting up (Roles, Rights, Rules, Prepared Tables, Enums etc.), Monitoring and Deploying PostgreSQL DBs on Linux Servers,
 
