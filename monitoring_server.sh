@@ -1,17 +1,28 @@
 #!/bin/bash
 
+LOG_FILE="/home/x/monitoring/intense_log.log"
+
+log() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
+}
+
 if [ "$EUID" -ne 0 ]; then
+  log "Script not run as root. Exiting."
   echo "Please run as root or use sudo"
   exit
 fi
 
+log "Starting script."
+
 mkdir -p /home/x/monitoring
 cd /home/x/monitoring
 
+log "Removing old log files."
 rm -f monitoring{1..11}.log
 rm -f monitoring.log
 
 touch monitoring.log
+log "Created new monitoring.log file."
 
 commands=(
     'htop'
@@ -51,6 +62,7 @@ current_command=0
 start_time=$(date +%s)
 
 # Initialize the progress bar
+log "Initializing progress bar."
 echo -ne "Progress: [0/$total_commands] - Estimated time remaining: $estimated_total_time seconds - Running time: 0 seconds\r"
 
 update_progress() {
@@ -59,16 +71,20 @@ update_progress() {
     echo -ne "\rProgress: [$current_command/$total_commands] - Estimated time remaining: $estimated_remaining_time seconds - Running time: $elapsed_time seconds\r"
 }
 
-trap 'echo -e "\nScript interrupted. Cleaning up..."; kill $(jobs -p); exit' SIGINT
+trap 'log "Script interrupted. Cleaning up."; echo -e "\nScript interrupted. Cleaning up..."; kill $(jobs -p); exit' SIGINT
 
 # Function to run a command and continuously print the progress bar
 run_command() {
     local command="$1"
+    log "Starting command: $command"
+    command_start_time=$(date +%s)
     timeout 5 bash -c "$command" | while IFS= read -r line; do
         echo -e "$line"
         update_progress
     done
     wait $!
+    command_end_time=$(date +%s)
+    log "Finished command: $command. Duration: $((command_end_time - command_start_time)) seconds."
 }
 
 # Background process to update the running time every second
@@ -90,6 +106,7 @@ for i in {0..10}; do
 done
 
 for i in {1..11}; do
+    log "Processing log file: monitoring${i}.log"
     echo -e "\n\n--- Output of monitoring${i}.log ---" >> monitoring.log
     tail -n 70 monitoring${i}.log >> monitoring.log
     # Print the progress bar again to ensure it's visible at the bottom
@@ -98,7 +115,9 @@ done
 
 # Final progress update
 update_progress
+log "All commands completed."
 echo -ne "\rProgress: [$current_command/$total_commands] - Completed\n"
 
 echo -e "\nAll commands have been executed and logs are consolidated."
+log "Script finished."
 
