@@ -369,7 +369,9 @@ done << EOF
 
     i14='sudo ipt -I INPUT -p tcp --dport 822 -j ACCEPT'
     
-    isa='sudo iptables-save | sudo tee /etc/iptables/iptables.rules'    
+    ste='sudo tee'
+
+    isa='sudo iptables-save | ste /etc/iptables/iptables.rules'    
 
     isa2='sudo iptables-save > /etc/iptables/rules.v4'
 
@@ -413,9 +415,9 @@ done << EOF
 
     ra='openssl rand -base64 16'
 
-    csz='chsh -s /bin/zsh'
+    csz='chsh -s /usr/bin/zsh'
 
-    csd='chsh -s /bin/dash'
+    csd='chsh -s /usr/bin/dash'
 
     ca='calcurse'
 
@@ -426,5 +428,29 @@ done << EOF
     ot7='nv ~/d/g/gh/obsidian-notes/tech7.md'
 
     vt7='vim ~/d/g/gh/obsidian-notes/tech7.md'
+
+    m0='cd ~/monitoring'
+
+    m1='htop | ste monitoring1.log'
+
+    m2='top | ste monitoring2.log'
+
+    m3='iostat -x 1 | ste monitoring3.log'
+
+    m4='vmstat 1 | ste monitoring4.log'
+
+    m5='sar -u 1 | ste monitoring5.log'
+
+    m6='netstat -tuln | ste monitoring6.log'
+
+    m7='sudo iftop | ste monitoring7.log'
+
+    m8='sudo nload | ste monitoring8.log'
+
+    m9='free -h | ste monitoring9.log'
+
+    m10='vmstat 1 5 | ste monitoring10.log'
+
+    m11='ps aux --sort=-%mem | head -n 10 | ste monitoring11.log'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
