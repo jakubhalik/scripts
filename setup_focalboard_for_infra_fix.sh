@@ -67,7 +67,7 @@ after_successful_certificates() {
 for i in "${!names[@]}"; do
   name="${names[$i]}"
   
-  rm -f ${name}.jakubhalik.org ${name},.jakubhalik.org
+  rm -f ${name}.jakubhalik.org ${name},.jakubhalik.org /etc/nginx/sites-enabled/${name}.jakubhalik.org /etc/nginx/sites-enabled/${name},.jakubhalik.org
 
   echo "
   server {
