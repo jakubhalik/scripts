@@ -7,7 +7,7 @@ fi
 
 cd /etc/nginx/sites-available
 
-names=("plan", "planning", "task", "tasks", "board", "boards", "calendar", "calendars", "work", "localplan")
+names=("plan" "planning" "task" "tasks" "board" "boards" "calendar" "calendars" "work" "localplan")
 
 successful=()
 failed=()
