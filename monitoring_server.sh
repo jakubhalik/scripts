@@ -73,13 +73,6 @@ run_command() {
     wait $!
 }
 
-(
-    while true; do
-        sleep 1
-        update_progress
-    done
-) &
-
 trap 'echo -e "\nScript interrupted. Cleaning up..."; kill $(jobs -p); exit' SIGINT
 
 for i in {0..10}; do
