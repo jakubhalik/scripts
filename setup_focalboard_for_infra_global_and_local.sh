@@ -40,7 +40,7 @@ after_successful_certificates() {
       ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
       location / {
-          proxy_pass http://host:8086;
+          proxy_pass http://localhost:8086;
           proxy_set_header Host \$host;
           proxy_set_header X-Real-IP \$remote_addr;
           proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
@@ -67,6 +67,8 @@ after_successful_certificates() {
 for i in "${!names[@]}"; do
   name="${names[$i]}"
   
+  rm -f ${name}.jakubhalik.org ${name},.jakubhalik.org
+
   echo "
   server {
       listen 80;
@@ -74,7 +76,7 @@ for i in "${!names[@]}"; do
       server_name ${name}.jakubhalik.org;
 
       location / {
-          proxy_pass http://host:8086;
+          proxy_pass http://localhost:8086;
       }
   }
   " > ${name}.jakubhalik.org
