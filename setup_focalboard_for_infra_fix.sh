@@ -13,9 +13,9 @@ successful=()
 failed=()
 
 after_successful_certificates() {
-   name=$1
-  
-  rm ${name}.jakubhalik.org
+  name=$1
+
+  rm -f ${name}.jakubhalik.org
   echo "
   server {
       listen 80;
@@ -58,16 +58,27 @@ after_successful_certificates() {
       }
   }
   " > ${name}.jakubhalik.org
-  ln -s /etc/nginx/sites-available/${name}.jakubhalik.org /etc/nginx/sites-enabled/
+  ln -sf /etc/nginx/sites-available/${name}.jakubhalik.org /etc/nginx/sites-enabled/
   systemctl restart nginx
   systemctl reload nginx
   echo "Removed old sites files and replaced them with new ones."
 }
 
-for i in "${!names[@]}"; do
-  name="${names[$i]}"
-  
-  rm -f ${name}.jakubhalik.org ${name},.jakubhalik.org /etc/nginx/sites-enabled/${name}.jakubhalik.org /etc/nginx/sites-enabled/${name},.jakubhalik.org
+# Clean up any old incorrect files
+for incorrect_file in /etc/nginx/sites-enabled/*; do
+  if [[ $incorrect_file == *,* ]]; then
+    rm -f "$incorrect_file"
+  fi
+done
+
+for incorrect_file in /etc/nginx/sites-available/*; do
+  if [[ $incorrect_file == *,* ]]; then
+    rm -f "$incorrect_file"
+  fi
+done
+
+for name in "${names[@]}"; do
+  rm -f ${name}.jakubhalik.org /etc/nginx/sites-enabled/${name}.jakubhalik.org
 
   echo "
   server {
@@ -80,9 +91,9 @@ for i in "${!names[@]}"; do
       }
   }
   " > ${name}.jakubhalik.org
-  
-  ln -s /etc/nginx/sites-available/${name}.jakubhalik.org /etc/nginx/sites-enabled/
-  
+
+  ln -sf /etc/nginx/sites-available/${name}.jakubhalik.org /etc/nginx/sites-enabled/
+
   certbot --nginx -d ${name}.jakubhalik.org
   if [ $? -eq 0 ]; then
     successful+=("${name}")
@@ -101,3 +112,4 @@ echo "Failed certificates:"
 for name in "${failed[@]}"; do
   echo "  - ${name}.jakubhalik.org"
 done
+
