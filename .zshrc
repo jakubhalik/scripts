@@ -608,6 +608,8 @@ done << EOF
     m10='vmstat 1 5 | ste monitoring10.log'
 
     m11='ps aux --sort=-%mem | head -n 10 | ste monitoring11.log'
+
+    wd='ne | grep Host'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 
