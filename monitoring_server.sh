@@ -60,7 +60,7 @@ echo -ne "Progress: [0/$total_commands] - Estimated time remaining: $estimated_t
 update_progress() {
     elapsed_time=$(( $(date +%s) - $start_time ))
     estimated_remaining_time=$(( estimated_total_time - elapsed_time ))
-    echo -ne "\rProgress: [$current_command/$total_commands] - Estimated time remaining: $estimated_remaining_time seconds\r - Running time: $elapsed_time seconds\r"
+    echo -ne "\rProgress: [$current_command/$total_commands] - Estimated time remaining: $estimated_remaining_time seconds - Running time: $elapsed_time seconds\r"
 }
 
 echo "Running function to run a command and continuously print the progress bar"
