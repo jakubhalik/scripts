@@ -610,6 +610,10 @@ done << EOF
     m11='ps aux --sort=-%mem | head -n 10 | ste monitoring11.log'
 
     wd='ne | grep Host'
+
+    bit='uname -m'
+
+    tw='echo "Real World Onion Sites, Dark.Fail, Ahmia.fi, Torch, Not Evil, Haystak, Onion Links, and The Hidden Wiki"'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 
