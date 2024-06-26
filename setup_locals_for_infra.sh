@@ -48,10 +48,10 @@ after_successful_certificates() {
           proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
           proxy_set_header X-Forwarded-Proto \$scheme;
 
-          proxy_read_timeout 300;
-          proxy_connect_timeout 300;
-          proxy_send_timeout 300;
-          send_timeout 300;
+          proxy_read_timeout 1d;
+          proxy_connect_timeout 1d;
+          proxy_send_timeout 1d;
+          send_timeout 1d;
       }
 
       error_page 500 502 503 504 /50x.html;
