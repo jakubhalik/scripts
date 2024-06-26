@@ -82,3 +82,4 @@ for name in "${names[@]}"; do
     " > ${name}.jakubhalik.org
 done
 
+systemctl restart nginx
