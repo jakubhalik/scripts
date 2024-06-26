@@ -18,5 +18,3 @@ for name in "${names[@]}"; do
   fi
 done
 
-nginx -s reload
-
