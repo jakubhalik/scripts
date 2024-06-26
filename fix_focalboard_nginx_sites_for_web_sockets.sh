@@ -1,0 +1,84 @@
+#!/bin/bash
+
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run as root or use sudo"
+  exit
+fi
+
+cd /etc/nginx/sites-available
+
+names=("plan" "planning" "task" "tasks" "board" "boards" "calendar" "calendars" "work")
+
+for name in "${names[@]}"; do
+    rm -f ${name}.jakubhalik.org
+
+    echo "
+    server {
+        listen 80;
+        listen [::]:80;
+        server_name ${name}.jakubhalik.org;
+
+        location / {
+          return 301 https://\$host\$request_uri;  # Redirect all HTTP traffic to HTTPS
+        }
+    }
+
+    server {
+       listen 443 ssl;
+       listen [::]:443 ssl;
+       server_name ${name}.jakubhalik.org;
+
+
+       ssl_certificate /etc/letsencrypt/live/${name}.jakubhalik.org/fullchain.pem;
+       ssl_certificate_key /etc/letsencrypt/live/${name}.jakubhalik.org/privkey.pem;
+
+       include /etc/letsencrypt/options-ssl-nginx.conf;
+       ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+       location ~ /ws/* {
+           proxy_set_header Upgrade \$http_upgrade;
+           proxy_set_header Connection \"upgrade\";
+           client_max_body_size 500M;
+           proxy_set_header Host \$http_host;
+           proxy_set_header X-Real-IP \$remote_addr;
+           proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+           proxy_set_header X-Forwarded-Proto \$scheme;
+           proxy_set_header X-Frame-Options SAMEORIGIN;
+           proxy_buffers 256 16k;
+           proxy_buffer_size 16k;
+           client_body_timeout 60;
+           send_timeout 300;
+           lingering_timeout 5;
+           proxy_connect_timeout 1d;
+           proxy_send_timeout 1d;
+           proxy_read_timeout 1d;
+           proxy_pass http://localhost:8086;
+       }
+
+       location / {
+           client_max_body_size 50M;
+           proxy_set_header Connection "";
+           proxy_set_header Host \$http_host;
+           proxy_set_header X-Real-IP \$remote_addr;
+           proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+           proxy_set_header X-Forwarded-Proto \$scheme;
+           proxy_set_header X-Frame-Options SAMEORIGIN;
+           proxy_buffers 256 16k;
+           proxy_buffer_size 16k;
+           proxy_read_timeout 600s;
+           proxy_cache_revalidate on;
+           proxy_cache_min_uses 2;
+           proxy_cache_use_stale timeout;
+           proxy_cache_lock on;
+           proxy_http_version 1.1;
+           proxy_pass http://localhost:8086;
+       }
+
+       error_page 500 502 503 504 /50x.html;
+       location = /50x.html {
+           root /usr/share/nginx/html;
+        }
+    }
+    " > ${name}.jakubhalik.org
+done
+
