@@ -27,6 +27,6 @@ $HOME/d/g/gh/scripts/wallpaper_switching.sh &
 $HOME/d/g/gh/scripts/deleting_what_bullshit_programs_create.sh &
 xcompmgr -c -f -n &
 # If you do not want the "anti-tearing" -c -f -n setting just kill the xcompmgr and start xcompmgr &
-exec dwm &
+exec dwm
 st 
 
