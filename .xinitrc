@@ -30,3 +30,7 @@ xcompmgr -c -f -n &
 exec dwm
 st 
 
+# Uncomment the 2 lines below if u don't want your screen to go black for rest
+# xset s off
+# xset -dpms
+
