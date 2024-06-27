@@ -626,6 +626,9 @@ done << EOF
     km='~/d/g/gh/scripts/kill_music.sh'
 
     ti='~/d/g/gh/scripts/timer.sh'
+
+    td='~/d/g/gh/scripts/timer_dynamic.sh'
+
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 
