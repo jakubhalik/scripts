@@ -458,5 +458,7 @@ done << EOF
     bit='uname -m'
 
     tw='echo "Real World Onion Sites, Dark.Fail, Ahmia.fi, Torch, Not Evil, Haystak, Onion Links, and The Hidden Wiki"'
+
+    wb='curl wttr.in/Brno'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
