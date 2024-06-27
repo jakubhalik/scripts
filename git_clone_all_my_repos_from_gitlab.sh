@@ -1,3 +1,74 @@
-# I used similar script for github twice, writing it here for gitlab is just an experiment prep in advance, I do not know if this will work exactly the same way for gitlab, so when I do actually need to use this for gitlab I will either remove this comment or remove this comment and change the code
 #!/bin/bash
-curl "https://api.gitlab.com/users/jakubhalik/repos?per_page=10000" | jq -r '.[].ssh_url' | xargs -L1 git clone
+
+read -sp 'Enter your GitLab personal access token: ' access_token
+echo
+
+gitlab_url="https://localgitlab.jakubhalik.org"
+
+projects=$(curl --header "PRIVATE-TOKEN: $access_token" "$gitlab_url/api/v4/projects?membership=true&per_page=1000")
+
+project_urls=$(echo $projects | jq -r '.[].http_url_to_repo')
+
+target_dir="/home/x/d/g/gl"
+
+mkdir -p $target_dir
+
+cd $target_dir
+
+failed_urls=()
+
+clone_repo() {
+    url=$1
+    modified_url="${url/https:\/\//https:\/\/$access_token@}"
+    echo "Cloning from $modified_url"
+    output=$(git clone $modified_url 2>&1)
+    if echo "$output" | grep -q "Password for"; then
+        return 1
+    else
+        return 0
+    fi
+}
+
+for url in $project_urls; do
+    clone_repo $url
+    if [ $? -ne 0 ]; then
+        echo "Failed to clone $url, adding to retry list."
+        failed_urls+=($url)
+    else
+        echo "Successfully cloned $url"
+    fi
+done
+
+attempts=0
+max_attempts=10
+
+while [ ${#failed_urls[@]} -gt 0 ]; do
+    ((attempts++))
+    echo "Retry attempt $attempts/$max_attempts"
+    remaining_urls=()
+    for url in "${failed_urls[@]}"; do
+        clone_repo $url
+        if [ $? -ne 0 ]; then
+            echo "Failed to clone $url"
+            remaining_urls+=($url)
+        else
+            echo "Successfully cloned $url"
+        fi
+    done
+    failed_urls=("${remaining_urls[@]}")
+
+    if [ ${#failed_urls[@]} -eq 0 ]; then
+        echo "All repositories cloned successfully."
+        exit 0
+    elif [ $attempts -ge $max_attempts ]; then
+        read -p "Do you want to try again 10 more times? (y/n): " choice
+        case "$choice" in
+            y|Y ) attempts=0 ;;
+            n|N ) echo "Exiting script."; exit 1 ;;
+            * ) echo "Invalid input. Exiting script."; exit 1 ;;
+        esac
+    fi
+done
+
+echo "Script completed."
+

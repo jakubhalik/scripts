@@ -205,6 +205,8 @@ done << EOF
 
     soa='ssh-add ~/.ssh/github_ed25519'
 
+    sog='ssh-add ~/.ssh/gitlab_ed25519'
+
     sst='ssh -T git@github.com'
 
     ma='bc'
@@ -466,5 +468,7 @@ done << EOF
     crl='crontab -l'
 
     km='~/d/g/gh/scripts/kill_music.sh'
+
+    ti='~/d/g/gh/scripts/timer.sh'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
