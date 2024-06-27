@@ -460,5 +460,11 @@ done << EOF
     tw='echo "Real World Onion Sites, Dark.Fail, Ahmia.fi, Torch, Not Evil, Haystak, Onion Links, and The Hidden Wiki"'
 
     wb='curl wttr.in/Brno'
+
+    ce='crontab -e'
+
+    crl='crontab -l'
+
+    km='~/d/g/gh/scripts/kill_music.sh'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end

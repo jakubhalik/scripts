@@ -1,0 +1,16 @@
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+0 6 * * * echo "Running amixer 70% at 6:00 AM" >> /tmp/cron.log 2>&1; /usr/bin/amixer set Master 70% >> /tmp/cron.log 2>&1
+0 6 * * * echo "Running mplayer at 6:00 AM" >> /tmp/cron.log 2>&1; cd /home/x/m && /usr/bin/mplayer -shuffle *.mp3 >> /tmp/cron.log 2>&1
+
+5 6 * * * echo "Running amixer 90% at 6:05 AM" >> /tmp/cron.log 2>&1; /usr/bin/amixer set Master 90% >> /tmp/cron.log 2>&1
+5 6 * * * echo "Running mplayer at 6:05 AM" >> /tmp/cron.log 2>&1; cd /home/x/m && /usr/bin/mplayer -shuffle *.mp3 >> /tmp/cron.log 2>&1
+
+15 6 * * * echo "Running amixer 90% at 6:15 AM" >> /tmp/cron.log 2>&1; /usr/bin/amixer set Master 90% >> /tmp/cron.log 2>&1
+15 6 * * * echo "Running mplayer at 6:15 AM" >> /tmp/cron.log 2>&1; cd /home/x/m && /usr/bin/mplayer -shuffle *.mp3 >> /tmp/cron.log 2>&1
+
+20 6 * * * echo "Running amixer 90% at 6:20 AM" >> /tmp/cron.log 2>&1; /usr/bin/amixer set Master 90% >> /tmp/cron.log 2>&1
+20 6 * * * echo "Running mplayer at 6:20 AM" >> /tmp/cron.log 2>&1; cd /home/x/m && /usr/bin/mplayer -shuffle *.mp3 >> /tmp/cron.log 2>&1
+
+* * * * * echo "Cron job running at $(date)" >> /tmp/cron_test.log 2>&1
