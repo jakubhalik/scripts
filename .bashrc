@@ -107,6 +107,14 @@ done << EOF
 
     bu='npm run build'
 
+    bd='bun run dev'
+
+    bdt='bd | t'
+
+    bb='bun run build'
+
+    bbt='bb | t'
+
     bt='bu | t'
 
     doc='cd ~/d'
@@ -139,7 +147,7 @@ done << EOF
 
     br='brave'
 
-    aus='yt-dlp -x --audio-format mp3'
+    aus='sudo yt-dlp -x --audio-format mp3'
 
     au='mplayer'
 
@@ -473,5 +481,6 @@ done << EOF
 
     td='~/d/g/gh/scripts/timer_dynamic.sh'
 
+    ct='cd ~/d/g/gh/text_kuba'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end

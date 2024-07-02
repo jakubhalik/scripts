@@ -9,6 +9,11 @@ export HISTSIZE=99999
 export SAVEHIST=99999
 export HISTFILE=~/.zsh_history
 
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export EDITOR=nvim
+
 bindkey "^R" history-incremental-search-backward
 bindkey "^S" history-incremental-search-forward
 
@@ -16,7 +21,7 @@ bindkey "^S" history-incremental-search-forward
 #    source "$HOME/.cache/wal/colors.sh"
 #fi
 
-PROMPT='[%F{#22c55e}%n@%m %F{#14b8a6}%~%F{none}] '
+PROMPT='[%F{#22c55e}%n@%F{#38bdf8}%m %F{#14b8a6}%~%F{none}] '
 
 #fee2e2
 #fecaca
@@ -263,6 +268,14 @@ done << EOF
 
     bu='npm run build'
 
+    bd='bun run dev'
+
+    bdt='bd | t'
+
+    bb='bun run build'
+
+    bbt='bb | t'
+
     bt='bu | t'
 
     doc='cd ~/d'
@@ -295,7 +308,7 @@ done << EOF
 
     br='brave'
 
-    aus='yt-dlp -x --audio-format mp3'
+    aus='sudo yt-dlp -x --audio-format mp3'
 
     au='mplayer'
 
@@ -629,6 +642,7 @@ done << EOF
 
     td='~/d/g/gh/scripts/timer_dynamic.sh'
 
+    ct='cd ~/d/g/gh/text_kuba'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 
