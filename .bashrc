@@ -27,6 +27,8 @@ done << EOF
 
     cl='~/d/g/gh/scripts/countLines.sh'
 
+    cln='~/d/g/gh/scripts/count_lines_next_js_projects.sh'
+
     se='setxkbmap'
 
     us='se us'
