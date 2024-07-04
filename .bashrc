@@ -487,6 +487,6 @@ done << EOF
 
     rx='/home/x/d/g/gh/scripts/restart_xorg.sh'
 
-    rl='home/x/d/g/gh/scripts/restore_dwm_layout.sh'
+    rl='/home/x/d/g/gh/scripts/restore_dwm_layout.sh'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
