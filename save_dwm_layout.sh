@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir -p ~/.dwm_session
+mkdir -p /home/x/.dwm_session
 
 # Save the list of open windows with their properties
-wmctrl -lG > ~/.dwm_session/windows
+wmctrl -lG > /home/x/.dwm_session/windows

@@ -12,4 +12,4 @@ while IFS= read -r line; do
     height=$(echo $line | awk '{print $6}')
     
     wmctrl -ir $wm_id -e 0,$x,$y,$width,$height
-done < ~/.dwm_session/windows
+done < /home/x/.dwm_session/windows
