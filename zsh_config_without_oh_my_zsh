@@ -274,7 +274,7 @@ done << EOF
 
     bdt='bd | t'
 
-    bb='bun run build'
+    bbu='bun run build'
 
     bbt='bb | t'
 
@@ -651,6 +651,8 @@ done << EOF
     rx='/home/x/d/g/gh/scripts/restart_xorg.sh'
 
     rl='/home/x/d/g/gh/scripts/restore_dwm_layout.sh'
+
+    mw='cd ~/m/work'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 
