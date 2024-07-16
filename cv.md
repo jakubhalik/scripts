@@ -22,6 +22,7 @@ Arch Linux, Debian Linux, (Both on Servers, Arch on Desktop), Setting up, Monito
 Neovim, Vim, DWM, ST (dynamic window manager and simple terminal from suckless)
 
 English: C1
+
 Czech: Native speaker
 
 ## Work Experience
