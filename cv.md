@@ -25,6 +25,8 @@ English: C1
 
 Czech: Native speaker
 
+Github: https://github.com/jakubhalik
+
 ## Work Experience
 
 ### 2023-2024 - Development777
