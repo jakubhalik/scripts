@@ -25,11 +25,13 @@ English: C1
 
 Czech: Native speaker
 
+Location: Brno, Czech Republic
+
 Github: https://github.com/jakubhalik
 
 ## Work Experience
 
-### 2023-2024 - Development777
+### 2023-2024 - Development777 (kajot)
 
 Fullstack RBAC CRUD Applications in NextJS, React, TS, JS, Tailwind, ShadCN/UI, Postgresql, Node-PG, Cypress, VueJS, Python, Selenium, MUI
 
