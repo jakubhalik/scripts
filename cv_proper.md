@@ -8,13 +8,13 @@
 
   - Typescript, Javascript, Bun, Node, React, NextJS, App router, pages router, NodePG, VueJS
     - React Server Components: User Authentication, SHA-256 Encryption, SCRAM-SHA256, E2EE, Dynamic Routing, User Management, Role-Based Access Control, PostgreSQL Interaction, Servers Communication
-    - React Client Components: State Management, Local & Global States, Hooks, Contexts, API Interaction
+    - React Client Components: State Management, Local & Global States, Hooks, Contexts, API Interaction (mainly swagger)
 
 - **Styling & UI Libraries**:
 
   - Tailwind, ShadCN/UI, CSS, SCSS, Bootstrap, MUI
 
-- **Testing & Automation**:
+- **Testing**:
 
   - Cypress, Selenium
 
