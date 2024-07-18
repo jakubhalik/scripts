@@ -6,8 +6,8 @@
 
 Typescript, Javascript, Bun, Node, NextJS (app router, pages router (hate the pages one tho, it's powerless)), React, NodePG (This is an underdog, I really recommend this BEYOND ANY db proxy typescript library)
 
-    - Server Side Components (User Authentication, SHA-256 Encrypting (Layering, or not), Salting, SCRAM-SHA256, SHA256Sum to PGP_SYM_encryption for unique encryption for each piece of data (for example each column value) data all based on one piece of credentials (E2EE (End to end encryption))), Dynamic routing, User Management, Role Based Access Control, Dynamic Interactions with PostgreSQL Database, Interactions with different Servers),
-    - Client Side Components (State Management, Local States, Global States, Hooks, Contexts, Interaction with APIs),
+    - Server Side Components (User Authentication, SHA-256 Encrypting (Layering, or not), Salting, SCRAM-SHA256, SHA256Sum to PGP_SYM_encryption for unique encryption for each piece of data (for example each column value) data all based on one piece of credentials (E2EE (End to end encryption))), Dynamic routing, User Management, Role Based Access Control, Dynamic Interactions with PostgreSQL Database, Interactions with different Servers), Web Sockets
+    - Client Side Components (State Management, Local States, Global States, Hooks, Contexts, Interaction with APIs (mainly swagger) ),
 
 Tailwind, ShadCN/UI, CSS (hate when it's custom tho), SCSS, Bootstrap, MUI (hate these 3 with passion), VueJS (don't really like this one, it weakens my powers down and forces people into duplication),
 
