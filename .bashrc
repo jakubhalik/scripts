@@ -90,7 +90,7 @@ done << EOF
 
     str='cd ~/.local/src/st'
 
-    o='cd ~/d/g/gh/obsidian-notes'
+    o='cd ~/d/g/gl/obsidian-notes'
 
     v='cd ~/v'
 
@@ -120,7 +120,9 @@ done << EOF
 
     doc='cd ~/d'
 
-    scr='cd ~/d/screenshots'
+    scr='cd ~/d/s'
+    
+    scre='sudo scrot'
 
     f='feh'
 
@@ -410,13 +412,13 @@ done << EOF
 
     it=' nmap -Pn 86.49.243.46 -p 80,443,8080'
 
-    ot4='nv ~/d/g/gh/obsidian-notes/tech4.md'
+    ot4='nv ~/d/g/gl/obsidian-notes/tech4.md'
 
-    vt4='vim ~/d/g/gh/obsidian-notes/tech4.md'
+    vt4='vim ~/d/g/gl/obsidian-notes/tech4.md'
 
-    ot5='nv ~/d/g/gh/obsidian-notes/tech5.md'
+    ot5='nv ~/d/g/gl/obsidian-notes/tech5.md'
 
-    vt5='vim ~/d/g/gh/obsidian-notes/tech5.md'
+    vt5='vim ~/d/g/gl/obsidian-notes/tech5.md'
 
     czt='sudo timedatectl set-timezone 'Europe/Prague''
 
@@ -432,13 +434,13 @@ done << EOF
 
     ca='calcurse'
 
-    ot6='nv ~/d/g/gh/obsidian-notes/tech6.md'
+    ot6='nv ~/d/g/gl/obsidian-notes/tech6.md'
 
-    vt6='vim ~/d/g/gh/obsidian-notes/tech6.md'
+    vt6='vim ~/d/g/gl/obsidian-notes/tech6.md'
 
-    ot7='nv ~/d/g/gh/obsidian-notes/tech7.md'
+    ot7='nv ~/d/g/gl/obsidian-notes/tech7.md'
 
-    vt7='vim ~/d/g/gh/obsidian-notes/tech7.md'
+    vt7='vim ~/d/g/gl/obsidian-notes/tech7.md'
 
     m0='cd ~/monitoring'
 
