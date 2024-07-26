@@ -655,6 +655,8 @@ done << EOF
     rl='/home/x/d/g/gh/scripts/restore_dwm_layout.sh'
 
     mw='cd ~/m/work'
+
+    l1='~/d/g/gh/scripts/lock_when_inactive_for_1_min.sh'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 

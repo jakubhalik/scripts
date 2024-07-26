@@ -31,6 +31,6 @@ xcompmgr &
 # Uncomment the 2 lines below if u don't want your screen to go black for rest
 # xset s off &
 # If you do not want the "anti-tearing" -c -f -n setting just kill the xcompmgr and start xcompmgr &
-exec dwm
+exec awesome
 # st &
 
