@@ -494,6 +494,6 @@ done << EOF
 
     mw='cd ~/m/work'
 
-    l1='~/d/g/gh/scripts/lock_when_inactive_for_1_min.sh'
+    l1='sudo ~/d/g/gh/scripts/lock_when_inactive_for_1_min.sh'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
