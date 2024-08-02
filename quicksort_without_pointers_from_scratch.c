@@ -145,33 +145,49 @@ void output_char(char character) {
     output(str);
 }
 
-int main() {
-    int array[] = {21, 4, 6, 3, 342, 9, 22, 432};
+void output_string_and_array(const char str[], int array[], int size) {
+    output(str);
 
-    output('The original array: ', array);
-
-    int amount_of_numbers = 8;
-
-    output('The amount of numbers in the array: ', amount_of_numbers);
-
-    quicksort(array, 0, amount_of_numbers - 1);
-
-    for (int i = 0; i < amount_of_numbers; i++) {
-
+    for (int i = 0; i < size; i++) {
         char buffer[12];
 
         intToStr(array[i], buffer);
 
         output(buffer);
 
-        if (i < amount_of_numbers - 1) {
+        if (i < size - 1) {
             output_char(',');
 
             output_char(' ');
         }
     }
+    output_char('\n');
+}
+
+void output_string_and_int(const char str[], int number) {
+    output(str);
+    
+    char buffer[12];
+
+    intToStr(number, buffer);
+
+    output(buffer);
 
     output_char('\n');
+}
+
+int main() {
+    int array[] = {21, 4, 6, 3, 342, 9, 22, 432};
+
+    int amount_of_numbers = 8;
+
+    output_string_and_array("The original array: ", array, amount_of_numbers);
+
+    output_string_and_int("The amount of numbers in the array: ", amount_of_numbers);
+
+    quicksort(array, 0, amount_of_numbers - 1);
+
+    output_string_and_array("The sorted array: ", array, amount_of_numbers);
 
     return 0;
 }
