@@ -148,7 +148,11 @@ void output_char(char character) {
 int main() {
     int array[] = {21, 4, 6, 3, 342, 9, 22, 432};
 
+    output('The original array: ', array);
+
     int amount_of_numbers = 8;
+
+    output('The amount of numbers in the array: ', amount_of_numbers);
 
     quicksort(array, 0, amount_of_numbers - 1);
 
