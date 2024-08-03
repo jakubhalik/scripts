@@ -27,18 +27,18 @@ int partition(int array[], int low, int high) {
 
 void quicksort(int array[], int low, int high) {
     if (low < high) {
-        int pivotIndex = partition(array, low, high);
+        int pivot_index = partition(array, low, high);
 
-        quicksort(array, low, pivotIndex - 1);
+        quicksort(array, low, pivot_index - 1);
 
-        quicksort(array, pivotIndex + 1, high);
+        quicksort(array, pivot_index + 1, high);
     }
 }
 
-void intToStr(int value, char str[]) {
+void int_to_str(int value, char str[]) {
     int i = 0;
 
-    int isNegative = 0;
+    int is_negative = 0;
 
     if (value == 0) {
         str[i++] = '0';
@@ -49,7 +49,7 @@ void intToStr(int value, char str[]) {
     }
 
     if (value < 0) {
-        isNegative = 1;
+        is_negative = 1;
 
         value = -value;
     }
@@ -62,7 +62,7 @@ void intToStr(int value, char str[]) {
         value = value / 10;
     }
 
-    if (isNegative) {
+    if (is_negative) {
         str[i++] = '-';
     }
 
@@ -86,8 +86,10 @@ void system_write(int file_descriptor, const char buffer[], int count) {
             // x86-64 architecture.
         // The syscall instruction is used to request a service from the kernel
         "syscall"
+
         // No output operands
         :
+
         // Doing inputs from here down
         : 
             // Using syscall n 1 for writing into RAX
@@ -95,10 +97,12 @@ void system_write(int file_descriptor, const char buffer[], int count) {
                 // used for storing return values 
                     // from functions and system calls
             "a"(1),
+
             // File descriptor into RDI
             // RDI is a destination index register, 
                 // used for string and memory operations
             "D"(file_descriptor),
+
             // Address of buffer into RSI
             // RSI is a source index register,
                 // used for string operations and as a general-purpose register
@@ -110,10 +114,12 @@ void system_write(int file_descriptor, const char buffer[], int count) {
                 // being explicit with &buf[0] ensures clarity 
                     // about the intent to get the address of the first element
             "S"(&buffer[0]),
+
             // Number of bytes to write into the RDX.
             // RDX is a data register. Used to hold data for operations.
             "d"(count)
-            // Clobbered registers: RCX Sand R11 are used by syscall,
+
+            // Clobbered registers: RCX and R11 are used by syscall,
             // clobbered, modified, by the syscall instruction,
                 // so they need to be saved if their values are needed
                     // after the call.
@@ -122,6 +128,8 @@ void system_write(int file_descriptor, const char buffer[], int count) {
             // memory: This indicates to the compiler that the assembly code 
                 // may read or write memory, 
                     // preventing certain optimizations around this code.
+
+            : "rcx", "r11", "memory"
     );
 }
 
@@ -151,7 +159,7 @@ void output_string_and_array(const char str[], int array[], int size) {
     for (int i = 0; i < size; i++) {
         char buffer[12];
 
-        intToStr(array[i], buffer);
+        int_to_str(array[i], buffer);
 
         output(buffer);
 
@@ -169,7 +177,7 @@ void output_string_and_int(const char str[], int number) {
     
     char buffer[12];
 
-    intToStr(number, buffer);
+    int_to_str(number, buffer);
 
     output(buffer);
 

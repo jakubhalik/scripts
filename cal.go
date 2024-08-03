@@ -79,14 +79,38 @@ func main() {
 	reset_from_highlight_to_default := "\033[0m"
 
 	for day := 1; day <= last_of_month.Day(); day++ {
-		if (day == today) {
-			fmt.Printf("%s%2d%s ", white_background_black_text_highlight_start, day, reset_from_highlight_to_default)
+
+		if is_birthday(day, month) {
+
+			fmt.Printf(
+				"%s%2d%s ", 
+				red_background_black_text_highlight_start, 
+				day, 
+				reset_from_highlight_to_default,
+			)
+
 		} else if is_holiday(day, month) {
-			fmt.Printf("%s%2d%s ", cyan_background_black_text_highlight_start, day, reset_from_highlight_to_default)
-		} else if is_birthday(day, month) {
-			fmt.Printf("%s%2d%s ", red_background_black_text_highlight_start, day, reset_from_highlight_to_default)
+
+			fmt.Printf(
+				"%s%2d%s ", 
+				cyan_background_black_text_highlight_start, 
+				day, 
+				reset_from_highlight_to_default,
+			)
+
+		} else if (day == today) {
+
+			fmt.Printf(
+				"%s%2d%s ", 
+				white_background_black_text_highlight_start, 
+				day, 
+				reset_from_highlight_to_default,
+			)
+
 		} else { 
+
 			fmt.Printf("%2d ", day) 
+
 		}
 
 		if (start_day_offset + day) % 7 == 0 {
