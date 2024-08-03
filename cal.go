@@ -35,12 +35,12 @@ func main() {
 		fmt.Print("   ")
 	}
 
-	highlight_start := "\033[47m\033[30m"
-	highlight_end := "\033[0m"
+	white_background_black_text_highlight_start := "\033[47m\033[30m"
+	reset_from_highlight_to_default := "\033[0m"
 
 	for day := 1; day <= last_of_month.Day(); day++ {
 		if (day == today) {
-			fmt.Printf("%s%2d%s ",highlight_start, day, highlight_end)
+			fmt.Printf("%s%2d%s ",white_background_black_text_highlight_start, day, reset_from_highlight_to_default)
 		} else { 
 			fmt.Printf("%2d ", day) 
 		}
