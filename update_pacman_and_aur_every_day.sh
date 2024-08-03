@@ -10,7 +10,7 @@ get_password() {
 
 update_system() {
     echo "$password" | sudo -S pacman -Syu --noconfirm
-    echo "$password" | sudo -S yay -Syu --noconfirm
+    echo "$password" | -S yay -Syu --noconfirm
 }
 
 get_password
