@@ -432,7 +432,7 @@ done << EOF
 
     csd='chsh -s /usr/bin/dash'
 
-    ca='calcurse'
+    ca='/home/x/cal'
 
     ot6='nv ~/d/g/gl/obsidian-notes/tech6.md'
 
