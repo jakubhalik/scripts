@@ -14,7 +14,7 @@ func get_days_of_week() [7]string {
 func main() {
     now := time.Now()
 
-    year, month := now.Year(), now.Month()
+    year, month, today := now.Year(), now.Month(), now.Day()
 
 	// day, hour, minute, second, nanosecond
 	first_of_month := time.Date(year, month, 1, 0, 0, 0, 0, time.Local)
@@ -35,8 +35,15 @@ func main() {
 		fmt.Print("   ")
 	}
 
+	highlight_start := "\033[47m\033[30m"
+	highlight_end := "\033[0m"
+
 	for day := 1; day <= last_of_month.Day(); day++ {
-		fmt.Printf("%2d ", day)
+		if (day == today) {
+			fmt.Printf("%s%2d%s ",highlight_start, day, highlight_end)
+		} else { 
+			fmt.Printf("%2d ", day) 
+		}
 
 		if (start_day_offset + day) % 7 == 0 {
 			fmt.Println()
