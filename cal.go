@@ -33,6 +33,21 @@ func is_holiday(day int, month time.Month) bool {
 	return false
 }
 
+func is_birthday(day int, month time.Month) bool {
+	birthdays := map[time.Month][]int{
+		time.January:   {5},
+		time.August:	{23},
+	}
+
+	for _, d := range birthdays[month] {
+		if d == day {
+			return true
+		}
+	}
+
+	return false
+}
+
 func main() {
     now := time.Now()
 
@@ -59,6 +74,8 @@ func main() {
 
 	white_background_black_text_highlight_start := "\033[47m\033[30m"
 	cyan_background_black_text_highlight_start := "\033[46m\033[30m"
+	red_background_black_text_highlight_start := "\033[41m\033[30m"
+
 	reset_from_highlight_to_default := "\033[0m"
 
 	for day := 1; day <= last_of_month.Day(); day++ {
@@ -66,6 +83,8 @@ func main() {
 			fmt.Printf("%s%2d%s ", white_background_black_text_highlight_start, day, reset_from_highlight_to_default)
 		} else if is_holiday(day, month) {
 			fmt.Printf("%s%2d%s ", cyan_background_black_text_highlight_start, day, reset_from_highlight_to_default)
+		} else if is_birthday(day, month) {
+			fmt.Printf("%s%2d%s ", red_background_black_text_highlight_start, day, reset_from_highlight_to_default)
 		} else { 
 			fmt.Printf("%2d ", day) 
 		}
