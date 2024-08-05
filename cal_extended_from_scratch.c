@@ -263,7 +263,63 @@ void output_cal(int year, int month, int today) {
 
     for (current_day = 1; current_day <= days_in_this_month; current_day++) {
 
-        if (current_day == today) {
+        const int holidays[12][3] = {
+            {1, 0, 0},        // January
+            {0, 0, 0},        // February
+            {29, 0, 0},       // March
+            {1, 0, 0},        // April
+            {1, 8, 0},        // May
+            {0, 0, 0},        // June
+            {5, 6, 0},        // July
+            {0, 0, 0},        // August
+            {28, 0, 0},       // September
+            {28, 0, 0},       // October
+            {17, 0, 0},       // November
+            {24, 25, 26}      // December
+        };
+
+        const int birthdays[12][1] = {
+            {5},		// January
+            {0},		// February
+            {0},		// March
+            {0},		// April
+            {0},		// May
+            {0},		// June
+            {0},		// July
+            {23},		// August
+            {0},		// September
+            {0},		// October
+            {0},		// November
+            {0}		    // December
+        };
+
+        int num_holidays = sizeof(holidays[0]) / sizeof(holidays[0][0]);
+
+        int num_birthdays = sizeof(birthdays[0]) / sizeof(birthdays[0][0]);
+
+        int is_holiday = 0;
+
+        int is_birthday = 0;
+
+        for (int i = 0; i < num_birthdays; i++) {
+            if (birthdays[month - 1][i] == current_day) {
+                output(red_background_black_text_highlight_start);
+                is_birthday = 1;
+                break;
+            }
+        }
+
+        if (!is_birthday) {
+            for (int i = 0; i < num_holidays; i++) {
+                if (holidays[month - 1][i] == current_day) {
+                    output(cyan_background_black_text_highlight_start);
+                    is_holiday = 1;
+                    break;
+                }
+            }
+        }
+
+        if (!is_birthday && !is_holiday && current_day == today) {
             output(white_background_black_text_highlight_start);
         }
 
@@ -275,7 +331,7 @@ void output_cal(int year, int month, int today) {
 
         output(day_str);
         
-        if (current_day == today) {
+        if (is_birthday || is_holiday || current_day == today) {
             output(reset_from_highlight_to_default);
         }
 
