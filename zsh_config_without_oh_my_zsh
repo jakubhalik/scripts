@@ -596,6 +596,8 @@ done << EOF
 
     ca='/home/x/cal'
 
+    cx='/home/x/cal_extended'
+
     ot6='nv ~/d/g/gl/obsidian-notes/tech6.md'
 
     vt6='vim ~/d/g/gl/obsidian-notes/tech6.md'
