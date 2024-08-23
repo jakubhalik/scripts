@@ -588,7 +588,7 @@ done << EOF
 
     fr='fl; ./run_filebrowser.sh'
 
-    ra='openssl rand 32 -out aes256key.bin'
+    ra='openssl rand -base64 1000'
 
     csz='chsh -s /usr/bin/zsh'
 
