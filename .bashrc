@@ -497,5 +497,11 @@ done << EOF
     mw='cd ~/m/work'
 
     l1='~/d/g/gh/scripts/lock_when_inactive_for_1_min.sh'
+
+    ke='keepassxc'
+
+    el='elisa'
+
+    th='echo "192.168.0.32"'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
