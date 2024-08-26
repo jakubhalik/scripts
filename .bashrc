@@ -503,5 +503,7 @@ done << EOF
     el='elisa'
 
     th='echo "192.168.0.32"'
+
+    dd='df -h /dev/mapper/volgroup0-lv_home'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
