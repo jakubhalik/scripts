@@ -17,6 +17,8 @@ export EDITOR=nvim
 bindkey "^R" history-incremental-search-backward
 bindkey "^S" history-incremental-search-forward
 
+bindkey '^[[Z' reverse-menu-complete
+
 #if [ -f "$HOME/.cache/wal/colors.sh" ]; then
 #    source "$HOME/.cache/wal/colors.sh"
 #fi
