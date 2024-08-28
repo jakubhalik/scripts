@@ -326,7 +326,7 @@ done << EOF
 
     hi='cat ~/.zsh_history'
 
-    he='hi | ./hiremcrap'
+    he='hi | /home/x/hiremcrap'
 
     x='vim .xinitrc'
 
