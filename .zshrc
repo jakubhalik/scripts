@@ -667,6 +667,14 @@ done << EOF
     th='echo "192.168.0.32"'
 
     dfd='df -h /dev/mapper/volgroup0-lv_home'
+
+    dfr='df -h /dev/mapper/volgroup0-lv_root'
+
+    nem='ne | grep Memory'
+
+    fb='ranger'
+
+    ran='ranger'
 EOF 
 # Aliases over .zshrc and .bashrc being automatically the same end
 
