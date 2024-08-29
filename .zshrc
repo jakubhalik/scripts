@@ -685,6 +685,8 @@ done << EOF
     da='nem; dfd; dfr'
 
     pi='pixterm'
+
+    img='sxiv'
 EOF 
 
 # Aliases over .zshrc and .bashrc being automatically the same end
