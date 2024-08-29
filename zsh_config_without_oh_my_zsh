@@ -656,15 +656,17 @@ done << EOF
 
     ct='cd ~/d/g/gh/text_kuba'
 
-    sd='/home/x/d/g/gh/scripts/save_dwm_layout.sh'
+    sd_obsolete='/home/x/d/g/gh/scripts/save_dwm_layout.sh'
 
-    rx='/home/x/d/g/gh/scripts/restart_xorg.sh'
+    rx_obsolete='/home/x/d/g/gh/scripts/restart_xorg.sh'
 
-    rl='/home/x/d/g/gh/scripts/restore_dwm_layout.sh'
+    rl_obsolete='/home/x/d/g/gh/scripts/restore_dwm_layout.sh'
 
     mw='cd ~/m/work'
 
     l1='~/d/g/gh/scripts/lock_when_inactive_for_1_min.sh'
+
+    l10='~/d/g/gh/scripts/lock_when_inactive_for_10_mins.sh'
 
     ke='keepassxc'
 
@@ -689,6 +691,8 @@ done << EOF
     img='sxiv'
 
     imgs='geeqie'
+
+    rd='shortwave'
 EOF 
 
 # Aliases over .zshrc and .bashrc being automatically the same end
