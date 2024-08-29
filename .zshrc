@@ -240,11 +240,11 @@ done << EOF
 
     u='sp -Syu'
 
-    pa='paru'
+    pa_obsolete='paru'
 
-    pi='pa -S'
+    pi_obsolete='pa -S'
 
-    pu='pa -Syu'
+    pu_obsolete='pa -Syu'
 
     y='yay'
 
@@ -424,7 +424,9 @@ done << EOF
 
     do='cd ~/d'
 
-    pdf='zathura'    
+    pdf_obsolete='zathura'    
+
+    pdf='mupdf'
 
     li='libreoffice'
 
@@ -681,6 +683,8 @@ done << EOF
     ran='ranger'
 
     da='nem; dfd; dfr'
+
+    pi='pixterm'
 EOF 
 
 # Aliases over .zshrc and .bashrc being automatically the same end
