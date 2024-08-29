@@ -521,6 +521,8 @@ done << EOF
     pi='pixterm'
 
     img='sxiv'
+
+    imgs='geeqie'
 EOF 
 
 # Aliases over .zshrc and .bashrc being automatically the same end
