@@ -12,6 +12,8 @@ export HISTFILE=~/.zsh_history
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
 export EDITOR=nvim
 
 bindkey "^R" history-incremental-search-backward
