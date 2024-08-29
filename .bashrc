@@ -114,7 +114,7 @@ done << EOF
 
     bbu='bun run build'
 
-    bbt='bb | t'
+    bbt='bbu | t'
 
     bt='bu | t'
 
@@ -186,7 +186,7 @@ done << EOF
 
     gl='cd ~/d/g/gl'
 
-    dif='~/d/g/gh/scripts/different_rc_generating_based_on_files_structure.sh'
+    dif_obsolete='~/d/g/gh/scripts/different_rc_generating_based_on_files_structure.sh'
 
     ac='m; au code.mp3'
 
@@ -198,11 +198,9 @@ done << EOF
 
     le='less'
 
-    cgr='hunspell -d cs_CZ'
+    cgr_not_used='hunspell -d cs_CZ'
 
     cr='clear'
-
-    di='dict'
 
     lc='locate'
 
@@ -242,9 +240,9 @@ done << EOF
 
     dw='cd ~/do'
 
-    tm='cs; vim test_for_wallpaper_math_pseudorandom_determination.sh'
+    tm_obsolete='cs; vim test_for_wallpaper_math_pseudorandom_determination.sh'
 
-    tx='~/d/g/gh/scripts/test_for_wallpaper_math_pseudorandom_determination.sh'
+    tx_obsolete='~/d/g/gh/scripts/test_for_wallpaper_math_pseudorandom_determination.sh'
 
     py='python'
 
@@ -515,6 +513,8 @@ done << EOF
     fb='ranger'
 
     ran='ranger'
+
+    da='nem; dfd; dfr'
 EOF 
 
 # Aliases over .zshrc and .bashrc being automatically the same end
