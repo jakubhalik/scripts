@@ -438,7 +438,7 @@ done << EOF
 
     ic='~/d/g/gh/scripts/install_all_vids_from_a_youtube_channel.sh'
 
-    vl='cd ~/v/l'
+    vl_obsolete='cd ~/v/l'
 
     va='cs; vim arch_install_manual'
 
@@ -695,6 +695,8 @@ done << EOF
     rd='shortwave'
 
     tra='echo "trans -b :cs \"hi\"; trans -b :en \"jak je?\" "'
+
+    vl='vlock'
 EOF 
 
 # Aliases over .zshrc and .bashrc being automatically the same end
