@@ -527,6 +527,8 @@ done << EOF
     imgs='geeqie'
 
     rd='shortwave'
+
+    tra='echo "trans -b :cs \"hi\"; trans -b :en \"jak je?\" "'
 EOF 
 
 # Aliases over .zshrc and .bashrc being automatically the same end
