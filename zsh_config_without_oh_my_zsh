@@ -640,7 +640,7 @@ done << EOF
 
     bit='uname -m'
 
-    tw='echo "Real World Onion Sites, Dark.Fail, Ahmia.fi, Torch, Not Evil, Haystak, Onion Links, and The Hidden Wiki"'
+    tw='echo "Real World Onion Sites, Dark.Fail, Ahmia.fi, Torch, Not Evil, Haystak, Onion Links, and The Hidden Wiki tor2web.nl onionengine.com"'
 
     wb='curl wttr.in/Brno'
 
