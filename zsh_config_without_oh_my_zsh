@@ -697,6 +697,10 @@ done << EOF
     tra='echo "trans -b :cs \"hi\"; trans -b :en \"jak je?\" "'
 
     vl='vlock'
+
+    lsc='lscpu'
+
+    pa='grep -E "^(processor|cpu cores|siblings)" /proc/cpuinfo'
 EOF 
 
 # Aliases over .zshrc and .bashrc being automatically the same end
