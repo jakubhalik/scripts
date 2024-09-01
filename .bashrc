@@ -8,7 +8,7 @@ while read -r alias_definition; do
     eval "alias $alias_definition"
 done << EOF
 
-    pv=$(grep 'pv' .env.local | cut -d '=' -f 2)
+    pv_obsolete=$(grep 'pv' .env.local | cut -d '=' -f 2)
 
     b='linux-terminal-battery-status'
 
@@ -535,6 +535,8 @@ done << EOF
     lsc='lscpu'
 
     pa='grep -E "^(processor|cpu cores|siblings)" /proc/cpuinfo'
+
+    fil='ristretto'
 EOF 
 
 # Aliases over .zshrc and .bashrc being automatically the same end
