@@ -538,6 +538,7 @@ done << EOF
 
     fil='ristretto'
 
+
 EOF 
 
 # Aliases over .zshrc and .bashrc being automatically the same end
