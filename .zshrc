@@ -11,8 +11,9 @@ export HISTFILE=~/.zsh_history
 
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
 export PATH="$HOME/.cargo/bin:$PATH"
+
+export ESTDIR=/home/x/d/g/c/speech_tools
 
 export EDITOR=nvim
 
