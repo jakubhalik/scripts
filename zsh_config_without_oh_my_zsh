@@ -704,6 +704,7 @@ done << EOF
     pa='grep -E "^(processor|cpu cores|siblings)" /proc/cpuinfo'
 
     fil='ristretto'
+
 EOF 
 
 # Aliases over .zshrc and .bashrc being automatically the same end
