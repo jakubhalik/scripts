@@ -15,6 +15,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 export ESTDIR=/home/x/d/g/c/speech_tools
 
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 export EDITOR=nvim
 
 bindkey "^R" history-incremental-search-backward
