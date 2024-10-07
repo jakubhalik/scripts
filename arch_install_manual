@@ -1,4 +1,4 @@
-# Might have to write something else instead of sdas depending on the desktop hardware
+# Might have to write something else instead of nvme0n1ps depending on the desktop hardware
 # Repetition regarding installs or similarities is to always see the logs explicitly for that very package
 # Y/y/YES/yes/enter to all pacman installs
 # If pacman command does not work put a sudo before it, I sometimes wrote it with it before, sometimes without it below in the instructions
@@ -16,7 +16,7 @@ cat /sys/firmware/fw_platform_size OR cat/sys/firmware/efi/fw_platform_size
 ls /sys/firmware/efi
 ip addr show
 lsblk
-fdisk /dev/sda
+fdisk /dev/nvme0n1
     p
         g
     n
@@ -38,17 +38,17 @@ fdisk /dev/sda
         44
     p
         w
-mkfs.fat -F32 /dev/sda1
-mkfs.ext4 /dev/sda2
-cryptsetup luksFormat /dev/sda3
+mkfs.fat -F32 /dev/nvme0n1p1
+mkfs.ext4 /dev/nvme0n1p2
+cryptsetup luksFormat /dev/nvme0n1p3
     YES
         password
         password
-cryptsetup open --type luks /dev/sda3 lvm
+cryptsetup open --type luks /dev/nvme0n1p3 lvm
     password
 pvcreate /dev/mapper/lvm
 vgcreate volgroup0 /dev/mapper/lvm
-lvcreate -L {size for the logical volume, if I had 460G for sda I would give this one 100G, but 30G is often more than enough here, unless bloated JS packages haha) volgroup0 -n lv_root
+lvcreate -L {size for the logical volume, if I had 460G for nvme0n1p I would give this one 100GB, but 30GB is often more than enough here, unless bloated JS packages haha) volgroup0 -n lv_root
 lvcreate -L {here just the rest of what u got bro} volgroup0 -n lv_home
 vgdisplay
 lvdisplay
@@ -59,7 +59,7 @@ mkfs.ext4 /dev/volgroup0/lv_root
 mkfs.ext4 /dev/volgroup0/lv_home
 mount /dev/volgroup0/lv_root /mnt
 mkdir -p /mnt/boot
-mount /dev/sda2 /mnt/boot
+mount /dev/nvme0n1p2 /mnt/boot
 df -h | grep /mnt/boot
 mkdir /mnt/home
 mount /dev/volgroup0/lv_home /mnt/home
@@ -122,7 +122,7 @@ nvim /etc/default/grub
         GRUB_DEFAULT=0
         GRUB_TIMEOUT=5
         GRUB_DISTRIBUTOR="Arch"
-        GRUB_CMDLINE_LINUX_DEFAULT="loglevel=7 cryptdevice=/dev/sda3:volgroup0"
+        GRUB_CMDLINE_LINUX_DEFAULT="loglevel=7 cryptdevice=/dev/nvme0n1p3:volgroup0"
         GRUB_CMDLINE_LINUX=""
         # Preload both GPT and MBR modules so that they are not missed
         GRUB_PRELOAD_MODULES="part_gpt part_msdos"
@@ -166,7 +166,7 @@ nvim /etc/default/grub
         # operating systems.
         #GRUB_DISABLE_OS_PROBER=false
 mkdir /boot/EFI
-mount /dev/sda1 /boot/EFI
+mount /dev/nvme0n1p1 /boot/EFI
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -188,7 +188,7 @@ git clone https://github.com/bugswriter/st.git
 ls
 cd dwm
 sudo make clean install
-sudo pacman -S libxinerama libx11 libxft libxinerama dmenu
+sudo pacman -S libx11 libxft libxinerama dmenu
 sudo make clean install
 ..
 cd st
@@ -264,3 +264,63 @@ sudo chsh -s /bin/dash x
 zsh
 sudo pacman -S zsh-syntax-highlighting
 echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+
+
+
+
+
+1. **Device Naming for NVMe**:
+   - NVMe drives are usually named `/dev/nvme0n1`, with partitions named `/dev/nvme0n1p1`, `/dev/nvme0n1p2`, etc.
+   - Anywhere in your instructions where you refer to `/dev/nvme0n1p`, replace it with `/dev/nvme0n1`.
+
+2. **fdisk Command for Partitioning**:
+   When partitioning with `fdisk` on an NVMe drive, run the following:
+   ```
+   fdisk /dev/nvme0n1
+   ```
+   Afterward, create partitions as described in the original instructions, but the partition names will be `/dev/nvme0n1p1`, `/dev/nvme0n1p2`, `/dev/nvme0n1p3`.
+
+3. **Encrypting and Setting up LVM**:
+   Use the following when creating LUKS and LVM on an NVMe:
+   - For LUKS encryption:
+     ```
+     cryptsetup luksFormat /dev/nvme0n1p3
+     cryptsetup open --type luks /dev/nvme0n1p3 lvm
+     ```
+   - For LVM setup, continue as usual, with the device `/dev/nvme0n1p3` replacing `/dev/nvme0n1p3`.
+
+4. **Boot and EFI Partition**:
+   Similarly, for mounting and formatting partitions:
+   - Format the EFI partition as FAT32:
+     ```
+     mkfs.fat -F32 /dev/nvme0n1p1
+     ```
+   - Format the root and home partitions as `ext4`:
+     ```
+     mkfs.ext4 /dev/nvme0n1p2
+     mkfs.ext4 /dev/volgroup0/lv_root
+     mkfs.ext4 /dev/volgroup0/lv_home
+     ```
+
+5. **Mounting Partitions**:
+   When mounting the partitions, make sure to refer to the correct NVMe partition names:
+   ```
+   mount /dev/volgroup0/lv_root /mnt
+   mkdir -p /mnt/boot
+   mount /dev/nvme0n1p2 /mnt/boot
+   mkdir /mnt/home
+   mount /dev/volgroup0/lv_home /mnt/home
+   ```
+
+6. **GRUB Configuration**:
+   When configuring GRUB for an NVMe installation, make sure the `GRUB_CMDLINE_LINUX_DEFAULT` reflects the NVMe drive name:
+   ```
+   GRUB_CMDLINE_LINUX_DEFAULT="loglevel=7 cryptdevice=/dev/nvme0n1p3:volgroup0"
+   ```
+
+7. **UEFI Bootloader Installation**:
+   When installing GRUB to an NVMe drive:
+   ```
+   grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck /dev/nvme0n1
+   ```
+
